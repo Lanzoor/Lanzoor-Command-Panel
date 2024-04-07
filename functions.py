@@ -28,10 +28,10 @@ def golt():
             attempts += 1
         elif inputValue == number:
             print(f"You've guessed it right! The answer was {number}, and you used {attempts} attempts in this game.")
+            break
         else:
             print("You dumdum, this number is out of the value!")
             attempts += 1
-        break
     
 def rps():
     UserChoice = input("Choose one! Rock, Paper, or Scissors!\n>>> ")
@@ -55,6 +55,11 @@ def rps():
             WinOrLose = "You won!"
         else:
             WinOrLose = "I won!"
+    print(f"You picked {UserChoice}, I pick {CPUChoice}! {WinOrLose}")
+        
+def ordinal(n: int) -> str:
+    return str(n) + ("th" if 11 <= (n % 100) <= 13 else (['th', 'st', 'nd', 'rd', 'th'][min(n % 10, 4)]))
+
     print(f"You picked {UserChoice}, I pick {CPUChoice}! {WinOrLose}")
         
 def ordinal(n: int) -> str:
