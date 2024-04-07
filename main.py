@@ -90,5 +90,5 @@ while True:
             print(f"\"{LCPInput}\" is not a valid command, try something else!")
             y = tryIntInput("Choose your maximum number!\n>>> ")
             print(f"My random choice between {x} and {y} is {random.randint(x, y)}!")
-        case _:
-            print(f"\"{LCPInput}\" is not a valid command, try something else!")
+            y = tryIntInput("Choose your maximum number!\n>>> ")
+            print(f"My random choice between {x} and {y} is {random.randint(x, y)}!")
