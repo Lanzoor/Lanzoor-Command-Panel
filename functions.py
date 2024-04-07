@@ -12,9 +12,9 @@ def golt():
     attempts = 0
     print(
         '''Let's play the \"Greater or lower than\" game!
-        The rules are simple, I pick a random number between 1 and 100.
-        If you make a guess, I'll tell you whenever your guess is greater than my guess, 
-        or your guess is lower than my guess until you guess the value! Let's get started.''',
+The rules are simple, I pick a random number between 1 and 100.
+If you make a guess, I'll tell you whenever your guess is greater than my guess, 
+or your guess is lower than my guess until you guess the value! Let's get started.''',
     )
 
     while True:
@@ -29,7 +29,7 @@ def golt():
         elif inputValue == number:
             print(f"You've guessed it right! The answer was {number}, and you used {attempts} attempts in this game.")
             break
-        else:
+        elif inputValue > 100:
             print("You dumdum, this number is out of the value!")
             attempts += 1
     
