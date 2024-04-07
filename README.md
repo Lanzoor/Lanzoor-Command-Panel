@@ -34,4 +34,6 @@ Now, it will open the terminal!
 
 `?datetime`: Get the current date and time based on your local timezone.
 
+`?ping`: Pong!
+
 Accepting suggestions!
