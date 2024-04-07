@@ -65,7 +65,3 @@ def ordinal(n: int) -> str:
             return str(n) + "th"
     else:
         return str(n) + "th"
-        else:
-            return str(n) + "th"
-    else:
-        return str(n) + "th"
