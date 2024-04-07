@@ -34,14 +34,11 @@ def golt():
             attempts += 1
     
 def rps():
-    UserChoice = input("Choose one! Rock, Paper, or Scissors!\n>>> ")
+    UserChoice = input("Choose one! Rock, Paper, or Scissors!\n>>> ").capitalize().replace(" ","")
     CPUChoice = random.choice(["Rock", "Paper", "Scissors"])
-    UserChoice = UserChoice.capitalize().replace(" ","")
     RpsChoice = ["Rock", "Paper", "Scissors"]
-    
     while UserChoice not in RpsChoice:
         UserChoice = input("You dumdum, that is not a valid choice! Try again.\n>>> ")
-    
     if CPUChoice == UserChoice:
         WinOrLose = "It's a draw!"
     else:
@@ -50,7 +47,6 @@ def rps():
             ("scissors", "paper"),
             ("paper", "rock")
         ]
-
         if (UserChoice, CPUChoice) in WinningConditions:
             WinOrLose = "You won!"
         else:
