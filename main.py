@@ -6,7 +6,7 @@ from functions import *
 
 # Declaration of basic variables that contains the help for LCP
 
-LCPCurrentVersion = "Beta 1.2"
+LCPCurrentVersion = "Beta 1.3"
 
 LCPStartHelp = f'''Hello User! Welcome to the Lanzoor Command Panel (Version: {LCPCurrentVersion})! 
 Type ?help to get help about the commands that you can use, or type ?exit to quit LCP.'''
@@ -83,12 +83,10 @@ while True:
             latency = timeit.timeit("print('Pong!')", number = 1)
             print(f"Average latency of 100 command inputs were {latency}s!")
         case "?randint":
-            x = tryIntInput("Choose your minimum number!\n>>> ")
-            y = tryIntInput("Choose your maximum number!\n>>> ")
+            x = tryIntInput("Choose your minimum number!\n    >>> ")
+            y = tryIntInput("Choose your maximum number!\n    >>> ")
             print(f"My random choice between {x} and {y} is {random.randint(x, y)}!")
         case _:
             print(f"\"{LCPInput}\" is not a valid command, try something else!")
-            y = tryIntInput("Choose your maximum number!\n>>> ")
-            print(f"My random choice between {x} and {y} is {random.randint(x, y)}!")
-            y = tryIntInput("Choose your maximum number!\n>>> ")
+            y = tryIntInput("Choose your maximum number!\n    >>> ")
             print(f"My random choice between {x} and {y} is {random.randint(x, y)}!")
