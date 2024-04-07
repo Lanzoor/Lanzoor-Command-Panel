@@ -10,7 +10,8 @@ Install python by clicking [here](https://python.org/downloads), follow the inst
 
 2. Install LCP.
 
-Install the `LCP.py` file, and left click it.
+Install all files (except this file, IMPORTANT: YOU HAVE TO INSTALL BOTH PYTHON FILES OR OTHERWISE WON'T WORK)
+then left click the `main.py` file.
 It will show you what app to open it, and choose python.
 Now, it will open the terminal!
 
