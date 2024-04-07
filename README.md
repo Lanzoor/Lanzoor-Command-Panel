@@ -6,7 +6,7 @@ LCP is a simple command terminal program that was built by Lanzoor using pure py
 
 1. Install Python.
 
-Install python by clicking [here](python.org), follow the instructions that the python installation wizard says, and finish the installation!
+Install python by clicking [here](https://python.org), follow the instructions that the python installation wizard says, and finish the installation!
 
 2. Install LCP.
 
