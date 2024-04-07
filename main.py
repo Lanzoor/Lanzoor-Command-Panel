@@ -6,7 +6,7 @@ from functions import *
 
 # Declaration of basic variables that contains the help for LCP
 
-LCPCurrentVersion = "Beta 1.1"
+LCPCurrentVersion = "Beta 1.2"
 
 LCPStartHelp = f'''Hello User! Welcome to the Lanzoor Command Panel (Version: {LCPCurrentVersion})! 
 Type ?help to get help about the commands that you can use, or type ?exit to quit LCP.'''
@@ -28,7 +28,7 @@ LCPInfo = f'''Welcome to LCP information page! Here are some informations about 
 Author: Lanzoor
 Programming language: Python
 Version (Current build): {LCPCurrentVersion}
-First build: Alpha v1.0.0 in GMT+9 2024-04-06 3PM'''
+First build: Alpha v1.0 in GMT+9 2024-04-06 3PM'''
 
 LCPUpdateLog = f'''Welcome to the LCP update log page! Here are the log of updates that were
 implemented in the LCP build. Also very simple fixes can be not listed on here.
@@ -37,15 +37,16 @@ Alpha v1.0: The first build with basic commands like ?exit, ?help, and ?updatelo
 Alpha v1.1: The second build that added the ?rps command.
 Alpha v1.2: Added the ?golt command.
 Alpha v1.3: Added date and time commands.
-Alpha v1.6: Little Changes, a combined version of Alpha v1.4 and v1.5.
-Alpha v1.8: Added the ?randint command, a combined version of Alpha v1.7.
+Alpha v1.8: Added the ?randint command.
 Beta v1.0: The first beta build with a more detailed executing indicator,
-?ping function, and handmade ordinal function that is combined with Alpha v1.9.
+?ping function, and handmade ordinal function.
 Beta v1.1: The second beta build that changed a lot about the code.'''
 
 print("Initializing Program...")
 time.sleep(0.25)
-print("Executing LCP...\n")
+print("Executing Python file \"main.py\"...")
+time.sleep(0.25)
+print("Executing LCP...")
 time.sleep(0.25)
 print(LCPStartHelp)
 
@@ -83,6 +84,10 @@ while True:
             print(f"Average latency of 100 command inputs were {latency}s!")
         case "?randint":
             x = tryIntInput("Choose your minimum number!\n>>> ")
+            y = tryIntInput("Choose your maximum number!\n>>> ")
+            print(f"My random choice between {x} and {y} is {random.randint(x, y)}!")
+        case _:
+            print(f"\"{LCPInput}\" is not a valid command, try something else!")
             y = tryIntInput("Choose your maximum number!\n>>> ")
             print(f"My random choice between {x} and {y} is {random.randint(x, y)}!")
         case _:
