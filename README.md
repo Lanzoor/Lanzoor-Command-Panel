@@ -37,4 +37,6 @@ Now, it will open the terminal!
 
 `?ping`: Pong!
 
+`?randint`: Pick a random value between the maximum and minimum value that you input.
+
 Accepting suggestions!
