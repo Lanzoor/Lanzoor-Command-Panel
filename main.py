@@ -46,7 +46,7 @@ print("Initializing Program...")
 time.sleep(0.25)
 print("Executing Python file \"main.py\"...")
 time.sleep(0.25)
-print("Executing LCP...")
+print("Executing LCP...\n")
 time.sleep(0.25)
 print(LCPStartHelp)
 
@@ -83,10 +83,10 @@ while True:
             latency = timeit.timeit("print('Pong!')", number = 1)
             print(f"Average latency of 100 command inputs were {latency}s!")
         case "?randint":
-            x = tryIntInput("Choose your minimum number!\n    >>> ")
-            y = tryIntInput("Choose your maximum number!\n    >>> ")
+            x = tryIntInput("Choose your minimum number!\n  >>> ")
+            y = tryIntInput("Choose your maximum number!\n  >>> ")
             print(f"My random choice between {x} and {y} is {random.randint(x, y)}!")
         case _:
             print(f"\"{LCPInput}\" is not a valid command, try something else!")
-            y = tryIntInput("Choose your maximum number!\n    >>> ")
+            y = tryIntInput("Choose your maximum number!\n  >>> ")
             print(f"My random choice between {x} and {y} is {random.randint(x, y)}!")
