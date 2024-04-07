@@ -3,6 +3,7 @@
 import random, time, timeit
 from datetime import datetime
 from functions import *
+
 # Declaration of basic variables that contains the help for LCP
 
 LCPCurrentVersion = "Beta 1.0"
