@@ -18,7 +18,7 @@ or your guess is lower than my guess until you guess the value! Let's get starte
     )
 
     while True:
-        inputValue = tryIntInput("Enter your guess!\n>>> ")
+        inputValue = tryIntInput("Enter your guess!\n    >>> ")
         if inputValue > number:
             if inputValue <= 100:
                 print(f"The number is lower than {inputValue}, try again!")
@@ -34,11 +34,11 @@ or your guess is lower than my guess until you guess the value! Let's get starte
             attempts += 1
     
 def rps():
-    UserChoice = input("Choose one! Rock, Paper, or Scissors!\n>>> ").capitalize().replace(" ","")
+    UserChoice = input("Choose one! Rock, Paper, or Scissors!\n    >>> ").capitalize().replace(" ","")
     CPUChoice = random.choice(["Rock", "Paper", "Scissors"])
     RpsChoice = ["Rock", "Paper", "Scissors"]
     while UserChoice not in RpsChoice:
-        UserChoice = input("You dumdum, that is not a valid choice! Try again.\n>>> ")
+        UserChoice = input("You dumdum, that is not a valid choice! Try again.\n    >>> ")
     if CPUChoice == UserChoice:
         WinOrLose = "It's a draw!"
     else:
