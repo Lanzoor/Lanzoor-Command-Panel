@@ -3,6 +3,7 @@
 import random, time, timeit
 from datetime import datetime
 from functions import *
+
 # Declaration of basic variables that contains the help for LCP
 
 LCPCurrentVersion = "Beta 1.1"
@@ -10,7 +11,7 @@ LCPCurrentVersion = "Beta 1.1"
 LCPStartHelp = f'''Hello User! Welcome to the Lanzoor Command Panel (Version: {LCPCurrentVersion})! 
 Type ?help to get help about the commands that you can use, or type ?exit to quit LCP.'''
 
-LCPHelp = f'''Welcome to LCP command help! Here are the list of all commands that you can use.
+LCPHelp = '''Welcome to LCP command help! Here are the list of all commands that you can use.
 ?help: Open this help message.
 ?exit: Exit LCP.
 ?info: Open the information of LCP.
@@ -43,8 +44,10 @@ Beta v1.0: The first beta build with a more detailed executing indicator,
 ?ping function, and handmade ordinal function that is combined with Alpha v1.9.
 Beta v1.1: The second beta build that changed a lot about the code.'''
 
+print("Initializing Program...")
+time.sleep(0.25)
 print("Executing LCP...\n")
-time.sleep(0.5)
+time.sleep(0.25)
 print(LCPStartHelp)
 
 # Command Inputs
