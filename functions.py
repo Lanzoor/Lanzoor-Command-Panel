@@ -58,9 +58,14 @@ def rps():
     print(f"You picked {UserChoice}, I pick {CPUChoice}! {WinOrLose}")
         
 def ordinal(n: int) -> str:
-    return str(n) + ("th" if 11 <= (n % 100) <= 13 else (['th', 'st', 'nd', 'rd', 'th'][min(n % 10, 4)]))
-
-    print(f"You picked {UserChoice}, I pick {CPUChoice}! {WinOrLose}")
-        
-def ordinal(n: int) -> str:
-    return str(n) + ("th" if 11 <= (n % 100) <= 13 else (['th', 'st', 'nd', 'rd', 'th'][min(n % 10, 4)]))
+    if n > 20 or n < 4:
+        if str(n).endswith("1"):
+            return str(n) + "st"
+        elif str(n).endswith("2"):
+            return str(n) + "nd"
+        elif str(n).endswith("3"):
+            return str(n) + "rd"
+        else:
+            return str(n) + "th"
+    else:
+        return str(n) + "th"
