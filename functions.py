@@ -1,6 +1,6 @@
 import random
 
-def tryGoltInput(prompt: str) -> int:
+def tryIntInput(prompt: str) -> int:
     while True:
         try:
             return int(input(prompt))
@@ -18,7 +18,7 @@ def golt():
     )
 
     while True:
-        inputValue = tryGoltInput("Enter your guess!\n>>> ")
+        inputValue = tryIntInput("Enter your guess!\n>>> ")
         if inputValue > number:
             if inputValue <= 100:
                 print(f"The number is lower than {inputValue}, try again!")
