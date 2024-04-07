@@ -10,14 +10,16 @@ Install python by clicking [here](https://python.org/downloads), follow the inst
 
 2. Install LCP.
 
-Install the latest release zip file, and unzip the file.
+Install the latest release zip file by clicking [here](https://github.com/Lanzoor/Lanzoor-Command-Panel/releases/latest), and unzip the file.
 then left click the `main.py` file.
 It will show you what app to open it, and choose python.
 Now, it will open the terminal!
+Also if you decide to just download individual files, make sure you download both `main.py` and `functions.py`!
+The code won't work without `functions.py` and will return an error if a command that involves a function from `functions.py`.
 
 ## Commands
 
-`?help`: Get the list of commands that you can currently use in LCP.
+`?help`: Get the list of commands that you can currently use in LCP, just like this!
 
 `?exit`: Exit LCP.
 
