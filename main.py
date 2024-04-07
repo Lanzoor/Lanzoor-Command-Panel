@@ -21,7 +21,8 @@ LCPHelp = f'''Welcome to LCP command help! Here are the list of all commands tha
 ?date: Get the current date based on your local timezone.
 ?time: Get the current time based on your local timezone.
 ?datetime: Get the current date and time based on your local timezone.
-?ping: Pong!'''
+?ping: Pong!
+?randint: Pick a random value between the maximum and minimum value that you input.'''
 
 LCPInfo = f'''Welcome to LCP information page! Here are some informations about LCP.
 Author: Lanzoor
@@ -37,9 +38,12 @@ Alpha v1.0.0: The first build with basic commands like ?exit, ?help, and ?update
 Alpha v1.0.1: The second build that added the ?rps command.
 Alpha v1.0.2: Added the ?golt command.
 Alpha v1.0.3: Added date and time commands.
-Alpha v1.0.6: Little Changes, a combined version of Alpha v1.0.4 and v1.0.5.'''
+Alpha v1.0.6: Little Changes, a combined version of Alpha v1.0.4 and v1.0.5.
+Alpha v1.0.8: Added the ?randint command, a combined version of Alpha v1.0.7.'''
 
 print(LCPStartHelp)
+
+# Command Inputs
 
 while True:
     LCPInput = input(">>> ").replace(" ", "").lower()
@@ -69,10 +73,10 @@ while True:
         print(f"Your date and time are {formatted_time} {formatted_date}!")
     elif LCPInput == "?ping":
         print("Pong!")
+    elif LCPInput == "?randint":
+        x = tryIntInput("Choose your minimum number!\n>>> ")
+        y = tryIntInput("Choose your maximum number!\n>>> ")
+        print(f"My random choice between {x} and {y} is {random.randint(x, y)}!")
     else:
         print(f"\"{LCPInput}\" is not a valid command, try something else!")
     # FIXME: Fix this fucking if-elif-else statement because it's hard to read
-        
-        
-        
-# NOTE: Some code of the program was reduced and improved by people in the Python Discord server
