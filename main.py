@@ -1,12 +1,11 @@
 # Imports that are used in this script
 
-import random, time
+import random, time, timeit
 from datetime import datetime
 from functions import *
-
 # Declaration of basic variables that contains the help for LCP
 
-LCPCurrentVersion = "Alpha v1.0.6"
+LCPCurrentVersion = "Beta 1.0"
 
 LCPStartHelp = f'''Hello User! Welcome to the Lanzoor Command Panel (Version: {LCPCurrentVersion})! 
 Type ?help to get help about the commands that you can use, or type ?exit to quit LCP.'''
@@ -39,8 +38,12 @@ Alpha v1.0.1: The second build that added the ?rps command.
 Alpha v1.0.2: Added the ?golt command.
 Alpha v1.0.3: Added date and time commands.
 Alpha v1.0.6: Little Changes, a combined version of Alpha v1.0.4 and v1.0.5.
-Alpha v1.0.8: Added the ?randint command, a combined version of Alpha v1.0.7.'''
+Alpha v1.0.8: Added the ?randint command, a combined version of Alpha v1.0.7.
+Beta v1.0: The first beta build with a more detailed executing indicator,
+?ping function, and handmade ordinal function that is combined with Alpha v1.0.9.'''
 
+print("Executing LCP...\n")
+time.sleep(0.5)
 print(LCPStartHelp)
 
 # Command Inputs
@@ -72,7 +75,8 @@ while True:
     elif LCPInput == "?datetime":
         print(f"Your date and time are {formatted_time} {formatted_date}!")
     elif LCPInput == "?ping":
-        print("Pong!")
+        latency = timeit.timeit("print('Pong!')", number=1)
+        print(f"Latency of the command input was {latency}s!")
     elif LCPInput == "?randint":
         x = tryIntInput("Choose your minimum number!\n>>> ")
         y = tryIntInput("Choose your maximum number!\n>>> ")
