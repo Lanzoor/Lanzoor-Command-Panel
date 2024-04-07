@@ -5,7 +5,7 @@ from datetime import datetime
 from functions import *
 # Declaration of basic variables that contains the help for LCP
 
-LCPCurrentVersion = "Beta 1.0"
+LCPCurrentVersion = "Beta 1.1"
 
 LCPStartHelp = f'''Hello User! Welcome to the Lanzoor Command Panel (Version: {LCPCurrentVersion})! 
 Type ?help to get help about the commands that you can use, or type ?exit to quit LCP.'''
@@ -33,14 +33,15 @@ Last updated: Now'''
 LCPUpdateLog = f'''Welcome to the LCP update log page! Here are the log of updates that were
 implemented in the LCP build. Also very simple fixes can be not listed on here.
 Current version: {LCPCurrentVersion}
-Alpha v1.0.0: The first build with basic commands like ?exit, ?help, and ?updatelog.
-Alpha v1.0.1: The second build that added the ?rps command.
-Alpha v1.0.2: Added the ?golt command.
-Alpha v1.0.3: Added date and time commands.
-Alpha v1.0.6: Little Changes, a combined version of Alpha v1.0.4 and v1.0.5.
-Alpha v1.0.8: Added the ?randint command, a combined version of Alpha v1.0.7.
+Alpha v1.0: The first build with basic commands like ?exit, ?help, and ?updatelog.
+Alpha v1.1: The second build that added the ?rps command.
+Alpha v1.2: Added the ?golt command.
+Alpha v1.3: Added date and time commands.
+Alpha v1.6: Little Changes, a combined version of Alpha v1.4 and v1.5.
+Alpha v1.8: Added the ?randint command, a combined version of Alpha v1.7.
 Beta v1.0: The first beta build with a more detailed executing indicator,
-?ping function, and handmade ordinal function that is combined with Alpha v1.0.9.'''
+?ping function, and handmade ordinal function that is combined with Alpha v1.9.
+Beta v1.1: The second beta build that changed a lot about the code.'''
 
 print("Executing LCP...\n")
 time.sleep(0.5)
