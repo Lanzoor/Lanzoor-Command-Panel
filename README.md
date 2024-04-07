@@ -33,3 +33,5 @@ Now, it will open the terminal!
 `?time`: Get the current time based on your local timezone.
 
 `?datetime`: Get the current date and time based on your local timezone.
+
+Accepting suggestions!
