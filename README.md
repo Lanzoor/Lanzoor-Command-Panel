@@ -1,6 +1,6 @@
 # LCP (Lanzoor Command Panel)
 
-LCP is a simple command termila program that was built by Lanzoor using pure python.
+LCP is a simple command terminal program that was built by Lanzoor using pure python.
 
 ## How to run LCP
 
