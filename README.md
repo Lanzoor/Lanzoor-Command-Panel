@@ -17,11 +17,19 @@ Now, it will open the terminal!
 ## Commands
 
 `?help`: Get the list of commands that you can currently use in LCP.
+
 `?exit`: Exit LCP.
+
 `?info`: Open the information of LCP.
+
 `?updatelog`: Open the update log.
+
 `?rps` or `?rockpaperscissors`: Play the Rock Paper Scissors game.
+
 `?golt` or `?greaterorlowerthan`: Play the "Greater or Lower than" game.
+
 `?date`: Get the current date based on your local timezone.
+
 `?time`: Get the current time based on your local timezone.
+
 `?datetime`: Get the current date and time based on your local timezone.
