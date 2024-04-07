@@ -28,8 +28,7 @@ LCPInfo = f'''Welcome to LCP information page! Here are some informations about 
 Author: Lanzoor
 Programming language: Python
 Version (Current build): {LCPCurrentVersion}
-First build: Alpha v1.0.0 in GMT+9 2024-04-06 3PM
-Last updated: Now'''
+First build: Alpha v1.0.0 in GMT+9 2024-04-06 3PM'''
 
 LCPUpdateLog = f'''Welcome to the LCP update log page! Here are the log of updates that were
 implemented in the LCP build. Also very simple fixes can be not listed on here.
