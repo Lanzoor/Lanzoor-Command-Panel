@@ -10,7 +10,7 @@ Install python by clicking [here](https://python.org/downloads), follow the inst
 
 2. Install LCP.
 
-Install the latest release of LCP by clicking [here](https://github.com/Lanzoor/Lanzoor-Command-Panel/releases/tag/LCPUpdatesBeta1.1.4), and then unzip it.
+Install the ZIP file of the latest release of LCP by clicking [here](https://github.com/Lanzoor/Lanzoor-Command-Panel/releases/tag/LCPUpdatesBeta1.1.4), and then unzip it.
 Left click the `main.py` file. It will show you what app to open it, and choose python.
 Now, it will open the terminal!
 
