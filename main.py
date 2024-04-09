@@ -6,12 +6,15 @@ from functions import *
 
 # Declaration of basic variables that contains the help for LCP
 
-LCPCurrentVersion = "Beta 1.1.4"
+CurrentVersion = "Beta 1.2"
 
-LCPStartHelp = f'''Hello User! Welcome to the Lanzoor Command Panel (Version: {LCPCurrentVersion})! 
-Type ?help to get help about the commands that you can use, or type ?exit to quit LCP.'''
+StartHelp = f'''
+Hello User! Welcome to the Lanzoor Command Panel (Version: {CurrentVersion})! 
+Type ?help to get help about the commands that you can use, or type ?exit to quit LCP.
+'''
 
-LCPHelp = '''Welcome to LCP command help! Here are the list of all commands that you can use.
+Help = '''
+Welcome to LCP command help! Here are the list of all commands that you can use.
 ?help: Open this help message.
 ?exit: Exit LCP.
 ?info: Open the information of LCP.
@@ -22,51 +25,59 @@ LCPHelp = '''Welcome to LCP command help! Here are the list of all commands that
 ?time: Get the current time based on your local timezone.
 ?datetime: Get the current date and time based on your local timezone.
 ?ping: Pong!
-?randint: Pick a random value between the maximum and minimum value that you input.'''
+?randint: Pick a random value between the maximum and minimum value that you input.
+?randkey: Generate a random key based on the length.
+'''
 
-LCPInfo = f'''Welcome to LCP information page! Here are some informations about LCP.
+Info = f'''
+Welcome to LCP information page! Here are some informations about LCP.
 Author: Lanzoor
 Programming language: Python
-Version (Current build): {LCPCurrentVersion}
-First build: Alpha v1.0 in GMT+9 2024-04-06 3PM'''
+Version (Current build): {CurrentVersion}
+First build: Alpha v1.0 in GMT+9 2024-04-06 3PM
+'''
 
-LCPUpdateLog = f'''Welcome to the LCP update log page! Here are the log of updates that were
-implemented in the LCP build. Also very simple fixes can be not listed on here.
-Current version: {LCPCurrentVersion}
+UpdateLog = f'''
+Welcome to the LCP update log page! Here are the log of updates that were
+implemented in the LCP build. Also minor updates are not included here, because it was really, really small.
+Current version: {CurrentVersion}
 Alpha v1.0: The first build with basic commands like ?exit, ?help, and ?updatelog.
 Alpha v1.1: The second build that added the ?rps command.
 Alpha v1.2: Added the ?golt command.
 Alpha v1.3: Added date and time commands.
-Alpha v1.8: Added the ?randint command.
+Alpha v1.4: Added the ?randint command.
 Beta v1.0: The first beta build with a more detailed executing indicator,
 ?ping function, and handmade ordinal function.
-Beta v1.1: The second beta build that changed a lot about the code.'''
+Beta v1.1: The second beta build that fixed the code mayhem.
+Beta v1.2: A major update that adjusted a lot about the code, and added more commands.
+'''
 
 print("Initializing Program...\n")
 time.sleep(0.25)
-print("Executing LCP...\n")
+print("Executing LCP...")
 time.sleep(0.25)
-print(LCPStartHelp)
+print(StartHelp)
 
 # Command Inputs
 
 while True:
-    LCPInput = input(">>> ").replace(" ", "").lower()
+    UserInput = str(input(">>> "))
+    FormattedUserInput = UserInput.replace(" ", "").lower()
     current_time = datetime.now()
     formatted_date = f"{current_time.strftime("%B")} {str(ordinal(int(current_time.strftime("%d"))))}{current_time.strftime(", %Y")}"
     formatted_time = current_time.strftime("%I:%M:%S %p")
-    match LCPInput:
+    match FormattedUserInput:
         case "?exit":
             print("Exiting LCP...")
             time.sleep(0.5)
             print("You exitted the LCP!")
             break
         case "?help":
-            print(LCPHelp)
+            print(Help)
         case "?info":
-            print(LCPInfo)
+            print(Info)
         case "?updatelog":
-            print(LCPUpdateLog)
+            print(UpdateLog)
         case ("?rps" | "?rockpaperscissors"):
             rps()
         case ("?golt" | "?greaterorlowerthan"):
@@ -84,5 +95,16 @@ while True:
             x = tryIntInput("Choose your minimum number!\n  >>> ")
             y = tryIntInput("Choose your maximum number!\n  >>> ")
             print(f"My random choice between {x} and {y} is {random.randint(x, y)}!")
+        case "?randkey":
+            length = tryIntInput("Enter the length of a key generation!\n  >>> ")
+            result = ""
+            char = ["a", "b", "c", "d", "e", "f", "A", "B", "C", "D", "E", "F", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
+            for _ in range(0, length):
+                if _ % 4 == 0 and _ != 0:
+                    result += "-"
+                result += random.choice(char)
+            print(f"Your random key that has {length} letters is {result}!")
+        case "":
+            print("Uhm, try typing something?")
         case _:
-            print(f"\"{LCPInput}\" is not a valid command, try something else!")
+            print(f"\"{UserInput}\" is not a valid command, try again!")
