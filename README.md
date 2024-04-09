@@ -38,6 +38,10 @@ Now, it will open the terminal!
 
 `?ping`: Pong!
 
+`?randint`: Pick a random value between the maximum and minimum value that you input.
+
+`?randkey`: Generate a random key based on the length.
+
 Accepting suggestions!
 
 Special Thanks to people in the Python Discord, who helped me fix the code a bit.
