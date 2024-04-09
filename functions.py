@@ -6,15 +6,16 @@ def tryIntInput(prompt: str) -> int:
             return int(input(prompt))
         except ValueError:
             print("You dumdum, that is not an integer!")
-            
 def golt():
     number = random.randint(0, 100)
     attempts = 0
     print(
-        '''Let's play the \"Greater or lower than\" game!
+        '''
+Let's play the \"Greater or lower than\" game!
 The rules are simple, I pick a random number between 1 and 100.
 If you make a guess, I'll tell you whenever your guess is greater than my guess, 
-or your guess is lower than my guess until you guess the value! Let's get started.''',
+or your guess is lower than my guess until you guess the value! Let's get started.
+''',
     )
 
     while True:
@@ -38,7 +39,7 @@ def rps():
     CPUChoice = random.choice(["Rock", "Paper", "Scissors"])
     RpsChoice = ["Rock", "Paper", "Scissors"]
     while UserChoice not in RpsChoice:
-        UserChoice = input("You dumdum, that is not a valid choice! Try again.\n    >>> ")
+        UserChoice = input("You dumdum, that is not a valid choice! Try again.\n  >>> ")
     if CPUChoice == UserChoice:
         WinOrLose = "It's a draw!"
     else:
@@ -54,14 +55,6 @@ def rps():
     print(f"You picked {UserChoice}, I pick {CPUChoice}! {WinOrLose}")
         
 def ordinal(n: int) -> str:
-    if n > 20 or n < 4:
-        if str(n).endswith("1"):
-            return str(n) + "st"
-        elif str(n).endswith("2"):
-            return str(n) + "nd"
-        elif str(n).endswith("3"):
-            return str(n) + "rd"
-        else:
-            return str(n) + "th"
-    else:
+    if 11 <= n % 100 <= 13:
         return str(n) + "th"
+    return str(n) + {1: "st", 2: "nd", 3: "rd"}.get(n % 10, "th")
