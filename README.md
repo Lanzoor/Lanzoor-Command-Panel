@@ -42,6 +42,8 @@ Now, it will open the terminal!
 
 `?randkey`: Generate a random key based on the length.
 
+`?flipacoin`: Flip a coin.
+
 Accepting suggestions!
 
 Special Thanks to people in the Python Discord, who helped me fix the code a bit.
