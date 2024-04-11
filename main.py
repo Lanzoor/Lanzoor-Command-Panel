@@ -104,6 +104,8 @@ while True:
                     result += "-"
                 result += random.choice(char)
             print(f"Your random key that has {length} letters is {result}!")
+        case "?flipacoin":
+            print(f"I flipped a coin... it landed on {random.choice(["Heads", "Tails"])}!")
         case "":
             print("Uhm, try typing something?")
         case _:
