@@ -20,6 +20,8 @@ Now, it will open the terminal!
 
 `?help`: Get the list of commands that you can currently use in LCP, like this!
 
+`?starthelp`: Open the start help message again.
+
 `?exit`: Exit LCP.
 
 `?info`: Open the information of LCP.
