@@ -6,7 +6,7 @@ from functions import *
 
 # Declaration of basic variables that contains the help for LCP
 
-CurrentVersion = "Beta 1.2"
+CurrentVersion = "Beta 1.3"
 
 StartHelp = f'''
 Hello User! Welcome to the Lanzoor Command Panel (Version: {CurrentVersion})! 
@@ -52,7 +52,7 @@ Beta v1.0: The first beta build with a more detailed executing indicator,
 ?ping function, and handmade ordinal function.
 Beta v1.1: The second beta build that fixed the code mayhem.
 Beta v1.2: A major update that adjusted a lot about the code, and added more commands.
-Beta v1.3: Added the ?starthelp command and adjusted the code a bit.
+Beta v1.3: Added the ?starthelp command and adjusted the code a lot.
 '''
 
 print("Initializing Program...\n")
