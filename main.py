@@ -16,6 +16,7 @@ Type ?help to get help about the commands that you can use, or type ?exit to qui
 Help = '''
 Welcome to LCP command help! Here are the list of all commands that you can use.
 ?help: Open this help message.
+?starthelp: Open the start help message again.
 ?exit: Exit LCP.
 ?info: Open the information of LCP.
 ?updatelog: Open the update log.
@@ -51,6 +52,7 @@ Beta v1.0: The first beta build with a more detailed executing indicator,
 ?ping function, and handmade ordinal function.
 Beta v1.1: The second beta build that fixed the code mayhem.
 Beta v1.2: A major update that adjusted a lot about the code, and added more commands.
+Beta v1.3: Added the ?starthelp command and adjusted the code a bit.
 '''
 
 print("Initializing Program...\n")
@@ -70,11 +72,13 @@ while True:
     match FormattedUserInput:
         case "?exit":
             print("Exiting LCP...")
-            time.sleep(0.5)
+            time.sleep(0.25)
             print("You exitted the LCP!")
             break
         case "?help":
             print(Help)
+        case "?starthelp":
+            print(StartHelp)
         case "?info":
             print(Info)
         case "?updatelog":
@@ -84,11 +88,11 @@ while True:
         case ("?golt" | "?greaterorlowerthan"):
             golt()
         case "?date":
-            print(f"Your current date is {formatted_date}!")
+            print(f"Your current date is {formatted_date}!\nIsLeapYear: {isLeapYear()}\nYour local timezone: {datetime.now().astimezone().strftime("%Z")}")
         case "?time":
             print(f"Your current time is {formatted_time}!")
         case "?datetime":
-            print(f"Your date and time are {formatted_time} {formatted_date}!")
+            print(f"Your date and time are {formatted_time} {formatted_date}!\nIsLeapYear: {isLeapYear()}\nYour local timezone: {datetime.now().astimezone().strftime("%Z")}")
         case "?ping":
             latency = timeit.timeit("print('Pong!')", number = 1)
             print(f"Latency of the command input was {latency * 1000}ms!")
