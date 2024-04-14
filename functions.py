@@ -1,10 +1,11 @@
 import random
+from datetime import datetime
 
 def tryIntInput(prompt: str) -> int:
     while True:
         try:
             return int(input(prompt))
-        except ValueError:
+        except:
             print("You dumdum, that is not an integer!")
 def golt():
     number = random.randint(0, 100)
@@ -58,3 +59,6 @@ def ordinal(n: int) -> str:
     if 11 <= n % 100 <= 13:
         return str(n) + "th"
     return str(n) + {1: "st", 2: "nd", 3: "rd"}.get(n % 10, "th")
+    
+def isLeapYear(year: int = int(datetime.now().strftime("%Y"))) -> bool:
+    return year % 4 == 0 and year % 100 != 0 or year % 400 == 0
