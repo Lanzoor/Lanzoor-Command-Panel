@@ -7,7 +7,7 @@ def tryIntInput(prompt: str) -> int:
             return int(input(prompt))
         except:
             print("You dumdum, that is not an integer!")
-def golt():
+def golt(points: int):
     number = random.randint(0, 100)
     attempts = 0
     print(
@@ -24,18 +24,20 @@ or your guess is lower than my guess until you guess the value! Let's get starte
         if inputValue > number:
             if inputValue <= 100:
                 print(f"The number is lower than {inputValue}, try again!")
+            else:
+                print("You dumdum, this number is out of the value!")
             attempts += 1
         elif inputValue < number:
             print(f"The number is greater than {inputValue}, try again!")
             attempts += 1
         elif inputValue == number:
-            print(f"You've guessed it right! The answer was {number}, and you used {attempts} attempts in this game.")
-            break
-        elif inputValue > 100:
-            print("You dumdum, this number is out of the value!")
             attempts += 1
+            print(f"You've guessed it right! The answer was {number}, and you used {attempts} attempts in this game. You gained 5 points!")
+            points += 5
+            return points
+            break
     
-def rps():
+def rps(points: int):
     UserChoice = input("Choose one! Rock, Paper, or Scissors!\n  >>> ").capitalize().replace(" ","")
     CPUChoice = random.choice(["Rock", "Paper", "Scissors"])
     RpsChoice = ["Rock", "Paper", "Scissors"]
@@ -43,6 +45,7 @@ def rps():
         UserChoice = input("You dumdum, that is not a valid choice! Try again.\n  >>> ")
     if CPUChoice == UserChoice:
         WinOrLose = "It's a draw!"
+        addingPoints = 2
     else:
         WinningConditions = [
             ("rock", "scissors"),
@@ -51,14 +54,17 @@ def rps():
         ]
         if (UserChoice, CPUChoice) in WinningConditions:
             WinOrLose = "You won!"
+            addingPoints = 3
         else:
             WinOrLose = "I won!"
-    print(f"You picked {UserChoice}, I pick {CPUChoice}! {WinOrLose}")
-        
+            addingPoints = 1
+    points += addingPoints
+    print(f"You picked {UserChoice}, I pick {CPUChoice}! {WinOrLose} You gained {addingPoints} points in this game.")
+    return points
+
 def ordinal(n: int) -> str:
-    if 11 <= n % 100 <= 13:
-        return str(n) + "th"
+    if 11 <= n % 100 <= 13: return str(n) + "th"
     return str(n) + {1: "st", 2: "nd", 3: "rd"}.get(n % 10, "th")
-    
+
 def isLeapYear(year: int = int(datetime.now().strftime("%Y"))) -> bool:
     return year % 4 == 0 and year % 100 != 0 or year % 400 == 0
