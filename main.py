@@ -28,6 +28,7 @@ Welcome to LCP command help! Here are the list of all commands that you can use.
 ?randint: Pick a random value between the maximum and minimum value that you input.
 ?randkey: Generate a random key based on the length.
 ?flipacoin: Flip a coin.
+?points: Check how many points you currently have.
 '''
 
 Info = f'''
