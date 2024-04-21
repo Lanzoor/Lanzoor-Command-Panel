@@ -1,12 +1,11 @@
 # Imports that are used in this script
 
-import random, time, timeit
+import random, time, timeit, functions
 from datetime import datetime
-from functions import *
 
 # Declaration of basic variables that contains the help for LCP
 
-CurrentVersion = "Beta 1.3"
+CurrentVersion = "Beta 1.4"
 
 StartHelp = f'''
 Hello User! Welcome to the Lanzoor Command Panel (Version: {CurrentVersion})! 
@@ -52,7 +51,8 @@ Beta v1.0: The first beta build with a more detailed executing indicator,
 ?ping function, and handmade ordinal function.
 Beta v1.1: The second beta build that fixed the code mayhem.
 Beta v1.2: A major update that adjusted a lot about the code, and added more commands.
-Beta v1.3: Added the ?starthelp command and adjusted the code a lot.
+Beta v1.3: Added the ?starthelp command and adjusted the code a bit.
+Beta v1.4: Added the points system, within the new command ?points.
 '''
 
 print("Initializing Program...\n")
@@ -60,14 +60,14 @@ time.sleep(0.25)
 print("Executing LCP...")
 time.sleep(0.25)
 print(StartHelp)
+points = 0
 
 # Command Inputs
-
 while True:
     UserInput = str(input(">>> "))
     FormattedUserInput = UserInput.replace(" ", "").lower()
     current_time = datetime.now()
-    formatted_date = f"{current_time.strftime("%B")} {str(ordinal(int(current_time.strftime("%d"))))}{current_time.strftime(", %Y")}"
+    formatted_date = f"{current_time.strftime("%B")} {str(functions.ordinal(int(current_time.strftime("%d"))))}{current_time.strftime(", %Y")}"
     formatted_time = current_time.strftime("%I:%M:%S %p")
     match FormattedUserInput:
         case "?exit":
@@ -84,24 +84,27 @@ while True:
         case "?updatelog":
             print(UpdateLog)
         case ("?rps" | "?rockpaperscissors"):
-            rps()
+            points = functions.rps(points)
         case ("?golt" | "?greaterorlowerthan"):
-            golt()
+            points = functions.golt(points)
         case "?date":
-            print(f"Your current date is {formatted_date}!\nIsLeapYear: {isLeapYear()}\nYour local timezone: {datetime.now().astimezone().strftime("%Z")}")
+            print(f"Your current date is {formatted_date}!\nIsLeapYear: {functions.isLeapYear()}\nYour local timezone: {datetime.now().astimezone().strftime("%Z")}")
         case "?time":
             print(f"Your current time is {formatted_time}!")
         case "?datetime":
-            print(f"Your date and time are {formatted_time} {formatted_date}!\nIsLeapYear: {isLeapYear()}\nYour local timezone: {datetime.now().astimezone().strftime("%Z")}")
+            print(f"Your date and time are {formatted_time} {formatted_date}!\nIsLeapYear: {functions.isLeapYear()}\nYour local timezone: {datetime.now().astimezone().strftime("%Z")}")
         case "?ping":
-            latency = timeit.timeit("print('Pong!')", number = 1)
+            latency = timeit.timeit(r"print('\nPong!')", number = 1)
             print(f"Latency of the command input was {latency * 1000}ms!")
         case "?randint":
-            x = tryIntInput("Choose your minimum number!\n  >>> ")
-            y = tryIntInput("Choose your maximum number!\n  >>> ")
+            while True:
+                x = functions.tryIntInput("Choose your minimum number!\n  >>> ")
+                y = functions.tryIntInput("Choose your maximum number!\n  >>> ")
+                if x < y: break 
+                else: print("The maximum number must be bigger than the minimum number, try again.")
             print(f"My random choice between {x} and {y} is {random.randint(x, y)}!")
         case "?randkey":
-            length = tryIntInput("Enter the length of a key generation!\n  >>> ")
+            length = functions.tryIntInput("Enter the length of a key generation!\n  >>> ")
             result = ""
             char = ["a", "b", "c", "d", "e", "f", "A", "B", "C", "D", "E", "F", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
             for _ in range(0, length):
@@ -111,7 +114,14 @@ while True:
             print(f"Your random key that has {length} letters is {result}!")
         case "?flipacoin":
             print(f"I flipped a coin... it landed on {random.choice(["Heads", "Tails"])}!")
+        case "?points":
+            if points == 0: 
+                print("It seems like you don't have any points. Play a game to get points!")
+            else:
+                print(f"You currently have {points} point(s)!")
         case "":
-            print("Uhm, try typing something?")
+            pass
         case _:
             print(f"\"{UserInput}\" is not a valid command, try again!")
+
+# TODO: Try to implement the point saving system but idk how lmao
