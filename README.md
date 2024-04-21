@@ -46,6 +46,8 @@ Now, it will open the terminal!
 
 `?flipacoin`: Flip a coin.
 
+`?points`: Check how many points you currently have.
+
 Accepting suggestions!
 
 Special Thanks to people in the Python Discord, who helped me fix the code a bit.
