@@ -6,17 +6,21 @@ LCP is a simple command terminal program that was built by Lanzoor using pure py
 
 1. Install Python.
 
-Install python by clicking [here](https://python.org/downloads), follow the instructions that the python installation wizard says, and finish the installation!
+Install the Python Interpreter by clicking [here](https://python.org/downloads), follow the instructions that the python installation wizard says, and finish the installation!
 
-(If you already have it, then you can skip this process and move to the next one.)
+(If you have already downloaded the Python Interpreter, then you can skip this process and move to the next one.)
+
+(You need to get the latest version of Python, the current version where I built this code is 3.12)
 
 2. Install LCP.
 
 Install the ZIP file of the latest release of LCP by clicking [here](https://github.com/Lanzoor/Lanzoor-Command-Panel/releases/tag/LCPUpdatesBeta1.1.4), and then unzip it.
-Left click the `main.py` file. It will show you what app to open it, and choose python.
+Double click the `main.py` file. It will show you what app to open it, and choose the Python Interpreter.
 Now, it will open the terminal!
 
 (Also if you decide to download the individual files, it is important to get both `functions.py` and `main.py` file. Otherwise the code won't work!)
+
+(If you are a mac user, make sure to find the Python Interpreter version 3 or more!)
 
 ## Commands
 
