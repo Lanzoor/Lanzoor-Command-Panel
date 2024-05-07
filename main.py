@@ -5,11 +5,11 @@ from datetime import datetime
 
 # Declaration of basic variables that contains the help for LCP
 
-CurrentVersion = "Beta 1.4"
+CurrentVersion = "Beta 1.5"
 
 StartHelp = f'''
 Hello User! Welcome to the Lanzoor Command Panel (Version: {CurrentVersion})! 
-Type ?help to get help about the commands that you can use, or type ?exit to quit LCP.
+Type ?help to get help about the commands that you can use, or type ?exit to exit LCP.
 '''
 
 Help = '''
@@ -54,13 +54,14 @@ Beta v1.1: The second beta build that fixed the code mayhem.
 Beta v1.2: A major update that adjusted a lot about the code, and added more commands.
 Beta v1.3: Added the ?starthelp command and adjusted the code a bit.
 Beta v1.4: Added the points system, within the new command ?points.
+Beta v1.5: Added the print animation.
 '''
 
-print("Initializing Program...\n")
-time.sleep(0.25)
-print("Executing LCP...")
-time.sleep(0.25)
-print(StartHelp)
+functions.printAnimation("Initializing Program...\n")
+time.sleep(0.5)
+functions.printAnimation("Executing LCP...")
+time.sleep(0.5)
+functions.printAnimation(StartHelp)
 points = 0
 
 # Command Inputs
@@ -72,38 +73,38 @@ while True:
     formatted_time = current_time.strftime("%I:%M:%S %p")
     match FormattedUserInput:
         case "?exit":
-            print("Exiting LCP...")
-            time.sleep(0.25)
-            print("You exitted the LCP!")
+            functions.printAnimation("Exiting LCP...")
+            time.sleep(0.5)
+            functions.printAnimation("You exited the LCP!")
             break
         case "?help":
-            print(Help)
+            functions.printAnimation(Help)
         case "?starthelp":
-            print(StartHelp)
+            functions.printAnimation(StartHelp)
         case "?info":
-            print(Info)
+            functions.printAnimation(Info)
         case "?updatelog":
-            print(UpdateLog)
+            functions.printAnimation(UpdateLog)
         case ("?rps" | "?rockpaperscissors"):
             points = functions.rps(points)
         case ("?golt" | "?greaterorlowerthan"):
             points = functions.golt(points)
         case "?date":
-            print(f"Your current date is {formatted_date}!\nIsLeapYear: {functions.isLeapYear()}\nYour local timezone: {datetime.now().astimezone().strftime("%Z")}")
+            functions.printAnimation(f"Your current date is {formatted_date}!\nIsLeapYear: {functions.isLeapYear()}\nYour local timezone: {datetime.now().astimezone().strftime("%Z")}")
         case "?time":
-            print(f"Your current time is {formatted_time}!")
+            functions.printAnimation(f"Your current time is {formatted_time}!")
         case "?datetime":
-            print(f"Your date and time are {formatted_time} {formatted_date}!\nIsLeapYear: {functions.isLeapYear()}\nYour local timezone: {datetime.now().astimezone().strftime("%Z")}")
+            functions.printAnimation(f"Your date and time are {formatted_time} {formatted_date}!\nIsLeapYear: {functions.isLeapYear()}\nYour local timezone: {datetime.now().astimezone().strftime("%Z")}")
         case "?ping":
-            latency = timeit.timeit(r"print('\nPong!')", number = 1)
-            print(f"Latency of the command input was {latency * 1000}ms!")
+            latency = timeit.timeit(r"functions.printAnimation('\nPong!')", number = 1)
+            functions.printAnimation(f"Latency of the command input was {latency * 1000}ms!")
         case "?randint":
             while True:
                 x = functions.tryIntInput("Choose your minimum number!\n  >>> ")
                 y = functions.tryIntInput("Choose your maximum number!\n  >>> ")
                 if x < y: break 
-                else: print("The maximum number must be bigger than the minimum number, try again.")
-            print(f"My random choice between {x} and {y} is {random.randint(x, y)}!")
+                else: functions.printAnimation("The maximum number must be bigger than the minimum number, try again.")
+            functions.printAnimation(f"My random choice between {x} and {y} is {random.randint(x, y)}!")
         case "?randkey":
             length = functions.tryIntInput("Enter the length of a key generation!\n  >>> ")
             result = ""
@@ -112,17 +113,17 @@ while True:
                 if _ % 4 == 0 and _ != 0:
                     result += "-"
                 result += random.choice(char)
-            print(f"Your random key that has {length} letters is {result}!")
+            functions.printAnimation(f"Your random key that has {length} letters is {result}!")
         case "?flipacoin":
-            print(f"I flipped a coin... it landed on {random.choice(["Heads", "Tails"])}!")
+            functions.printAnimation(f"I flipped a coin... it landed on {random.choice(["Heads", "Tails"])}!")
         case "?points":
             if points == 0: 
-                print("It seems like you don't have any points. Play a game to get points!")
+                functions.printAnimation("It seems like you don't have any points. Play a game to get points!")
             else:
-                print(f"You currently have {points} point(s)!")
+                functions.printAnimation(f"You currently have {points} point(s)!")
         case "":
             pass
         case _:
-            print(f"\"{UserInput}\" is not a valid command, try again!")
+            functions.printAnimation(f"\"{UserInput}\" is not a valid command, try again!")
 
 # TODO: Try to implement the point saving system but idk how lmao
