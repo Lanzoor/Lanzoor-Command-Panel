@@ -5,14 +5,14 @@ from datetime import datetime
 
 # Declaration of basic variables that contains the help for LCP
 
-CurrentVersion = "Beta 1.5"
+currentver = "Beta 1.5"
 
-StartHelp = f'''
-Hello User! Welcome to the Lanzoor Command Panel (Version: {CurrentVersion})! 
+starthelp = f'''
+Hello User! Welcome to the Lanzoor Command Panel (Version: {currentver})! 
 Type ?help to get help about the commands that you can use, or type ?exit to exit LCP.
 '''
 
-Help = '''
+help = '''
 Welcome to LCP command help! Here are the list of all commands that you can use.
 ?help: Open this help message.
 ?starthelp: Open the start help message again.
@@ -31,99 +31,99 @@ Welcome to LCP command help! Here are the list of all commands that you can use.
 ?points: Check how many points you currently have.
 '''
 
-Info = f'''
+info = f'''
 Welcome to LCP information page! Here are some informations about LCP.
 Author: Lanzoor
-Programming language: Python
-Version (Current build): {CurrentVersion}
-First build: Alpha v1.0 in GMT+9 2024-04-06 3PM
+Programming language: Python (3.11~)
+Version (Current version): {currentver}
+First version: Alpha v1.0 in GMT+9 2024-04-06 3PM
 '''
 
-UpdateLog = f'''
+updatelog = f'''
 Welcome to the LCP update log page! Here are the log of updates that were
-implemented in the LCP build. Also minor updates are not included here, because it was really, really small.
-Current version: {CurrentVersion}
-Alpha v1.0: The first build with basic commands like ?exit, ?help, and ?updatelog.
-Alpha v1.1: The second build that added the ?rps command.
+implemented in the LCP version. Also minor updates are not included here, because it was really, really small.
+Current version: {currentver}
+Alpha v1.0: The first version with basic commands like ?exit, ?help, and ?updatelog.
+Alpha v1.1: The second version that added the ?rps command.
 Alpha v1.2: Added the ?golt command.
 Alpha v1.3: Added date and time commands.
 Alpha v1.4: Added the ?randint command.
-Beta v1.0: The first beta build with a more detailed executing indicator,
+Beta v1.0: The first beta version with a more detailed executing indicator,
 ?ping function, and handmade ordinal function.
-Beta v1.1: The second beta build that fixed the code mayhem.
+Beta v1.1: The second beta version that fixed the code mayhem.
 Beta v1.2: A major update that adjusted a lot about the code, and added more commands.
 Beta v1.3: Added the ?starthelp command and adjusted the code a bit.
 Beta v1.4: Added the points system, within the new command ?points.
 Beta v1.5: Added the print animation.
+Beta v1.6: Reduced the code for optimization.
 '''
 
 functions.printAnimation("Initializing Program...\n")
 time.sleep(0.5)
 functions.printAnimation("Executing LCP...")
 time.sleep(0.5)
-functions.printAnimation(StartHelp)
+functions.printAnimation(starthelp)
 points = 0
 
 # Command Inputs
 while True:
-    UserInput = str(input(">>> "))
-    FormattedUserInput = UserInput.replace(" ", "").lower()
-    current_time = datetime.now()
-    formatted_date = f"{current_time.strftime("%B")} {str(functions.ordinal(int(current_time.strftime("%d"))))}{current_time.strftime(", %Y")}"
-    formatted_time = current_time.strftime("%I:%M:%S %p")
-    match FormattedUserInput:
+    userinput = str(input(">>> "))
+    formatteduserinput = userinput.replace(" ", "").lower()
+    ctime = datetime.now()
+    formatteddate = f"{ctime.strftime("%B")} {str(functions.ordinal(int(ctime.strftime("%d"))))}{ctime.strftime(", %Y")}"
+    formattedtime = ctime.strftime("%I:%M:%S %p")
+    match formatteduserinput:
         case "?exit":
             functions.printAnimation("Exiting LCP...")
             time.sleep(0.5)
             functions.printAnimation("You exited the LCP!")
             break
         case "?help":
-            functions.printAnimation(Help)
+            functions.printAnimation(help)
         case "?starthelp":
-            functions.printAnimation(StartHelp)
+            functions.printAnimation(starthelp)
         case "?info":
-            functions.printAnimation(Info)
+            functions.printAnimation(info)
         case "?updatelog":
-            functions.printAnimation(UpdateLog)
+            functions.printAnimation(updatelog)
         case ("?rps" | "?rockpaperscissors"):
             points = functions.rps(points)
         case ("?golt" | "?greaterorlowerthan"):
             points = functions.golt(points)
         case "?date":
-            functions.printAnimation(f"Your current date is {formatted_date}!\nIsLeapYear: {functions.isLeapYear()}\nYour local timezone: {datetime.now().astimezone().strftime("%Z")}")
+            functions.printAnimation(f"Your current date is {formatteddate}!\nIsLeapYear: {functions.isLeapYear()}\nYour local timezone: {datetime.now().astimezone().strftime("%Z")}")
         case "?time":
-            functions.printAnimation(f"Your current time is {formatted_time}!")
+            functions.printAnimation(f"Your current time is {formattedtime}!")
         case "?datetime":
-            functions.printAnimation(f"Your date and time are {formatted_time} {formatted_date}!\nIsLeapYear: {functions.isLeapYear()}\nYour local timezone: {datetime.now().astimezone().strftime("%Z")}")
+            functions.printAnimation(f"Your date and time are {formattedtime} {formatteddate}!\nIsLeapYear: {functions.isLeapYear()}\nYour local timezone: {datetime.now().astimezone().strftime("%Z")}")
         case "?ping":
             latency = timeit.timeit(r"functions.printAnimation('\nPong!')", number = 1)
             functions.printAnimation(f"Latency of the command input was {latency * 1000}ms!")
         case "?randint":
             while True:
-                x = functions.tryIntInput("Choose your minimum number!\n  >>> ")
-                y = functions.tryIntInput("Choose your maximum number!\n  >>> ")
-                if x < y: break 
+                maximum = functions.tryIntInput("Choose your minimum number!\n  >>> ")
+                minimum = functions.tryIntInput("Choose your maximum number!\n  >>> ")
+                if maximum < minimum: break 
                 else: functions.printAnimation("The maximum number must be bigger than the minimum number, try again.")
-            functions.printAnimation(f"My random choice between {x} and {y} is {random.randint(x, y)}!")
+            functions.printAnimation(f"My random choice between {maximum} and {minimum} is {random.randint(maximum, minimum)}!")
         case "?randkey":
             length = functions.tryIntInput("Enter the length of a key generation!\n  >>> ")
             result = ""
-            char = ["a", "b", "c", "d", "e", "f", "A", "B", "C", "D", "E", "F", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
-            for _ in range(0, length):
-                if _ % 4 == 0 and _ != 0:
+            char = list("abcdef1234567890")
+            for index in range(0, length):
+                if index % 4 == 0 and index != 0:
                     result += "-"
                 result += random.choice(char)
             functions.printAnimation(f"Your random key that has {length} letters is {result}!")
         case "?flipacoin":
             functions.printAnimation(f"I flipped a coin... it landed on {random.choice(["Heads", "Tails"])}!")
         case "?points":
-            if points == 0: 
-                functions.printAnimation("It seems like you don't have any points. Play a game to get points!")
-            else:
-                functions.printAnimation(f"You currently have {points} point(s)!")
-        case "":
+            functions.printAnimation("It seems like you don't have any points. Play a game to get points!" if points == 0 else f"You currently have {points} points!")
+        case (""):
             pass
         case _:
-            functions.printAnimation(f"\"{UserInput}\" is not a valid command, try again!")
+            if "?" in formatteduserinput: 
+                functions.printAnimation(f"\"{userinput}\" is not a valid command, try again!")
 
 # TODO: Try to implement the point saving system but idk how lmao
+# TODO: add some easter eggs for dataminers LOL
