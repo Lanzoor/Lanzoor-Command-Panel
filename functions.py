@@ -22,20 +22,15 @@ or your guess is lower than my guess until you guess the value! Let's get starte
 
     while True:
         inputValue = tryIntInput("Enter your guess!\n  >>> ")
-        if inputValue > number:
-            if inputValue <= 100:
-                printAnimation(f"The number is lower than {inputValue}, try again!")
-            else:
-                printAnimation("You dumdum, that value is out of the range! Try a value that is under or equal to 100.")
-            attempts += 1
-        elif inputValue < number:
-            if inputValue >= 1:
-                printAnimation(f"The number is greater than {inputValue}, try again!")
-            else:
-                printAnimation("You dumdum, that value is under the range! Try a value that is greater or equal to 1!")
-            attempts += 1
+        attempts += 1
+        
+        if not (1 <= number <= 100):
+            printAnimation("You dumdum, that value is out of the range! Try a value that is in the range 1 ~ 100.")
+        elif inputValue > number and not (inputValue > 100):
+            printAnimation(f"The number is lower than {inputValue}, try again!")
+        elif inputValue < number and not (inputValue < 1):
+            printAnimation(f"The number is greater than {inputValue}, try again!")
         elif inputValue == number:
-            attempts += 1
             printAnimation(f"You've guessed it right! The answer was {number}, and you used {attempts} attempts in this game. You gained 5 points!")
             points += 5
             return points
@@ -74,7 +69,7 @@ def ordinal(n: int) -> str:
 def isLeapYear(year: int = int(datetime.now().strftime("%Y"))) -> bool:
     return year % 4 == 0 and year % 100 != 0 or year % 400 == 0
 
-def printAnimation(message: str, delay: float | int = 0.005) -> None:
+def printAnimation(message: str, delay: float | int = 0.001) -> None:
     for char in message:
         sys.stdout.write(char)
         sys.stdout.flush()
