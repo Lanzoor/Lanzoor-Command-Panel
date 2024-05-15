@@ -16,12 +16,19 @@ def golt(points: int, multi: int):
 Let's play the \"Greater or lower than\" game!
 The rules are simple, I pick a random number between 1 and 100.
 If you make a guess, I'll tell you whenever your guess is greater than my guess, 
-or your guess is lower than my guess until you guess the value! Let's get started.
+or your guess is lower than my guess until you guess the value! Also type exit to just... exit the game.
 ''',
     )
 
     while True:
-        inputValue = tryIntInput("Enter your guess!\n  >>> ")
+        inputValue = inputAnimation("Enter your guess!\n  >>> ")
+        if inputValue == "exit": 
+            return points
+        try: 
+            inputValue = int(inputValue)
+        except:
+            printAnimation("You dumdum, that is not an integer!")
+            continue
         attempts += 1
         
         if not (1 <= number <= 100):
@@ -45,7 +52,7 @@ def rps(points: int, multi: int):
     
     if CPUChoice == UserChoice:
         WinOrLose = "It's a draw!"
-        addingPoints = 2
+        addingPoints = 2 * multi
     else:
         WinningConditions = [
             ("Rock", "Scissors"),
@@ -76,7 +83,7 @@ def printAnimation(message: str, delay: float | int = 0.001) -> None:
         sleep(delay)
     print()
     
-def inputAnimation(message: str, delay: float | int = 0.001):
+def inputAnimation(message: str, delay: float | int = 0.001) -> str:
     for char in message:
         sys.stdout.write(char)
         sys.stdout.flush()
