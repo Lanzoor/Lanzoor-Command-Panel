@@ -1,61 +1,45 @@
 # LCP (Lanzoor Command Panel)
 
-LCP is a simple command terminal program that was built by Lanzoor using pure python.
+> Hello! Welcome to the LCP help page. Make sure to read all of this file, to download and furthermore run the Lanzoor Command Panel properly.
 
-## How to run LCP
+## Installing the Python Interpreter
 
-1. Install Python.
+Sorry for the inconvenience, but for now, Lanzoor Command Panel needs a **Python interpreter** to run successfully. If you already installed the Python interpreter, you can skip this step.
 
-Install the Python Interpreter by clicking [here](https://python.org/downloads), follow the instructions that the python installation wizard says, and finish the installation!
+1. Start by installing the **Python interpreter** by clicking [here](https://python.org/downloads).
+2. Click the **[Download Python]** button. It will install an executable file for you.
+3. Follow all instructions that the installation wizard says.
 
-(If you have already downloaded the Python Interpreter, then you can skip this process and move to the next one.)
+> NOTE: Make sure to download the **latest version** of Python! You need to download at least **3.10~** version of Python otherwise some features might not work properly!
 
-(You need to get the latest version of Python, the current version where I built this code is 3.12)
+If you are done downloading the Python interpreter. You can proceed downloading the Lanzoor Command Panel itself.
 
-2. Install LCP.
+## Installing Lanzoor Command Panel
 
-Install the ZIP file of the latest release of LCP by clicking [here](https://github.com/Lanzoor/Lanzoor-Command-Panel/releases/tag/LCPUpdatesBeta1.1.4), and then unzip it.
-Double click the `main.py` file. It will show you what app to open it, and choose the Python Interpreter.
-Now, it will open the terminal!
+Download the latest version of Lanzoor Command Panel by clicking [here](https://github.com/Lanzoor/Lanzoor-Command-Panel/releases/latest). Make sure to download the ZIP file. Now, unzip the ZIP file that you downloaded. It will contain those files: **README.md** which is the current file that you are viewing, **functions.py** python file which is a file that contains functions for the actual program itself which is the **main.py**.
 
-(Also if you decide to download the individual files, it is important to get both `functions.py` and `main.py` file. Otherwise the code won't work!)
+> NOTE: If you are going to download individual files, make sure to download both **functions.py** file and the **main.py** file. Otherwise the code just will not work.
 
-(If you are a mac user, make sure to find the Python Interpreter version 3 or more!)
+If you are done installing those files or the ZIP file, double click on the **main.py** file. It will show you a pop up, saying to choose which app/program to open this file with; click the option **Python**.
 
-## Commands
+> NOTE: If you are on MacOS, because an outdated version of Python Interpreter is installed by default, make sure to select the new one. You can check those by looking their names carefully.
 
-`?help`: Get the list of commands that you can currently use in LCP, like this!
+It will now open up the terminal, which is the Lanzoor Command Panel itself.
 
-`?starthelp`: Open the start help message again.
+Also if you want to run it inside your powershell / bash shell, move the zip file inside the C disk and run this command in Windows:
 
-`?exit`: Exit LCP.
+```ps
+cd "C:/LCP Project/"
+python -o "main.py"
+```
 
-`?info`: Open the information of LCP.
+(If `python` does not work, then you can try `py`)
 
-`?updatelog`: Open the update log.
+And run this in MacOS:
 
-`?rps` or `?rockpaperscissors`: Play the Rock Paper Scissors game.
+```bash
+cd "C:/LCP Project/"
+python3 -o main.py
+```
 
-`?golt` or `?greaterorlowerthan`: Play the "Greater or Lower than" game.
-
-`?date`: Get the current date based on your local timezone.
-
-`?time`: Get the current time based on your local timezone.
-
-`?datetime`: Get the current date and time based on your local timezone.
-
-`?ping`: Pong!
-
-`?randint`: Pick a random value between the maximum and minimum value that you input.
-
-`?randkey`: Generate a random key based on the length.
-
-`?flipacoin`: Flip a coin.
-
-`?points`: Check how many points you currently have.
-
-`?shop`: Open the shop.
-
-Accepting suggestions!
-
-Special Thanks to people in the Python Discord, who helped me fix the code a bit.
+Extra information can be found when you input `?help` in the Lanzoor Command Panel Program.
