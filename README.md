@@ -54,6 +54,8 @@ Now, it will open the terminal!
 
 `?points`: Check how many points you currently have.
 
+`?shop`: Open the shop.
+
 Accepting suggestions!
 
 Special Thanks to people in the Python Discord, who helped me fix the code a bit.
