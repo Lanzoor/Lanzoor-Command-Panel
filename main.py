@@ -1,12 +1,9 @@
-# Imports that are used in this script
-
 import random, time, timeit, functions
 from datetime import datetime
 
-# Declaration of basic variables that contains the help for LCP
 points = 0
 multiplier = 1
-currentver = "Beta 1.8"
+currentver = "Beta 1.9"
 
 starthelp = f'''
 Hello User! Welcome to the Lanzoor Command Panel (Version: {currentver})! 
@@ -19,13 +16,12 @@ Welcome to LCP command help! Here are the list of all commands that you can use.
 ?starthelp: Open the start help message again.
 ?exit: Exit LCP.
 ?info: Open the information of LCP.
-?updatelog: Open the update log.
 ?rps or ?rockpaperscissors: Play the Rock Paper Scissors game.
 ?golt or ?greaterorlowerthan: Play the "Greater or Lower than" game.
 ?date: Get the current date based on your local timezone.
 ?time: Get the current time based on your local timezone.
 ?datetime: Get the current date and time based on your local timezone.
-?ping: Pong!
+?ping: Check the print latency...for some reason because Lanzoor thought that this was a funny idea-
 ?randint: Pick a random value between the maximum and minimum value that you input.
 ?randkey: Generate a random key based on the length.
 ?flipacoin: Flip a coin.
@@ -39,27 +35,6 @@ Author: Lanzoor
 Programming language: Python (3.11~)
 Version (Current version): {currentver}
 First version: Alpha v1.0 in GMT+9 2024-04-06 3PM
-'''
-
-updatelog = f'''
-Welcome to the LCP update log page! Here are the log of updates that were
-implemented in the LCP version. Also minor updates are not included here, because it was really, really small.
-Current version: {currentver}
-Alpha v1.0: The first version with basic commands like ?exit, ?help, and ?updatelog.
-Alpha v1.1: The second version that added the ?rps command.
-Alpha v1.2: Added the ?golt command.
-Alpha v1.3: Added date and time commands.
-Alpha v1.4: Added the ?randint command.
-Beta v1.0: The first beta version with a more detailed executing indicator,
-?ping function, and handmade ordinal function.
-Beta v1.1: The second beta version that fixed the code mayhem.
-Beta v1.2: A major update that adjusted a lot about the code, and added more commands.
-Beta v1.3: Added the ?starthelp command and adjusted the code a bit.
-Beta v1.4: Added the points system, within the new command ?points.
-Beta v1.5: Added the print animation.
-Beta v1.6: Reduced the code for optimization.
-Beta v1.7: Added the shop.
-Beta v1.8: Balanced the shop costs and points per games.
 '''
 
 functions.printAnimation("Initializing Program...\n")
@@ -93,8 +68,6 @@ Type the corresponding number to buy the item!
             functions.printAnimation(starthelp)
         case "?info":
             functions.printAnimation(info)
-        case "?updatelog":
-            functions.printAnimation(updatelog)
         case ("?rps" | "?rockpaperscissors"):
             points = functions.rps(points, multiplier)
         case ("?golt" | "?greaterorlowerthan"):
@@ -137,7 +110,8 @@ Type the corresponding number to buy the item!
             print(shop)
             while True:
                 shopInput = input("Enter an item value or exit!\n  >>> ")
-                if shopInput == "exit": break
+                if shopInput == "exit": 
+                    break
                 try:
                     shopInput = int(shopInput)
                 except:
