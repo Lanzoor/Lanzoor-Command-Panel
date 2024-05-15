@@ -5,10 +5,10 @@ from time import sleep
 def tryIntInput(prompt: str) -> int:
     while True:
         try:
-            return int(input(prompt))
+            return int(inputAnimation(prompt))
         except:
             printAnimation("You dumdum, that is not an integer!")
-def golt(points: int):
+def golt(points: int, multi: int):
     number = random.randint(0, 100)
     attempts = 0
     printAnimation(
@@ -31,33 +31,33 @@ or your guess is lower than my guess until you guess the value! Let's get starte
         elif inputValue < number and not (inputValue < 1):
             printAnimation(f"The number is greater than {inputValue}, try again!")
         elif inputValue == number:
-            printAnimation(f"You've guessed it right! The answer was {number}, and you used {attempts} attempts in this game. You gained 5 points!")
-            points += 5
+            printAnimation(f"You've guessed it right! The answer was {number}, and you used {attempts} attempts in this game. You gained {7 * multi} points!")
+            points += 7 * multi
             return points
     
-def rps(points: int):
-    UserChoice = input("Choose one! Rock, Paper, or Scissors!\n  >>> ").capitalize().replace(" ","")
+def rps(points: int, multi: int):
+    UserChoice = inputAnimation("Choose one! Rock, Paper, or Scissors!\n  >>> ").capitalize().replace(" ","")
     RpsChoice = ["Rock", "Paper", "Scissors"]
     CPUChoice = random.choice(RpsChoice)
     
     while UserChoice not in RpsChoice:
-        UserChoice = input("You dumdum, that is not a valid choice! Try again.\n  >>> ")
+        UserChoice = inputAnimation("You dumdum, that is not a valid choice! Try again.\n  >>> ").capitalize().replace(" ","")
     
     if CPUChoice == UserChoice:
         WinOrLose = "It's a draw!"
         addingPoints = 2
     else:
         WinningConditions = [
-            ("rock", "scissors"),
-            ("scissors", "paper"),
-            ("paper", "rock")
+            ("Rock", "Scissors"),
+            ("Scissors", "Paper"),
+            ("Paper", "Rock"),
         ]
         if (UserChoice, CPUChoice) in WinningConditions:
             WinOrLose = "You won!"
-            addingPoints = 3
+            addingPoints = 3 * multi
         else:
             WinOrLose = "I won!"
-            addingPoints = 1
+            addingPoints = 1 * multi
     points += addingPoints
     printAnimation(f"You picked {UserChoice}, I pick {CPUChoice}! {WinOrLose} You gained {addingPoints} points in this game.")
     return points
@@ -75,3 +75,10 @@ def printAnimation(message: str, delay: float | int = 0.001) -> None:
         sys.stdout.flush()
         sleep(delay)
     print()
+    
+def inputAnimation(message: str, delay: float | int = 0.001):
+    for char in message:
+        sys.stdout.write(char)
+        sys.stdout.flush()
+        sleep(delay)
+    return input("")
