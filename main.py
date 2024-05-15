@@ -4,8 +4,9 @@ import random, time, timeit, functions
 from datetime import datetime
 
 # Declaration of basic variables that contains the help for LCP
-
-currentver = "Beta 1.5"
+points = 0
+multiplier = 1
+currentver = "Beta 1.8"
 
 starthelp = f'''
 Hello User! Welcome to the Lanzoor Command Panel (Version: {currentver})! 
@@ -29,6 +30,7 @@ Welcome to LCP command help! Here are the list of all commands that you can use.
 ?randkey: Generate a random key based on the length.
 ?flipacoin: Flip a coin.
 ?points: Check how many points you currently have.
+?shop: Open the shop.
 '''
 
 info = f'''
@@ -56,6 +58,8 @@ Beta v1.3: Added the ?starthelp command and adjusted the code a bit.
 Beta v1.4: Added the points system, within the new command ?points.
 Beta v1.5: Added the print animation.
 Beta v1.6: Reduced the code for optimization.
+Beta v1.7: Added the shop.
+Beta v1.8: Balanced the shop costs and points per games.
 '''
 
 functions.printAnimation("Initializing Program...\n")
@@ -63,10 +67,15 @@ time.sleep(0.5)
 functions.printAnimation("Executing LCP...")
 time.sleep(0.5)
 functions.printAnimation(starthelp)
-points = 0
 
 # Command Inputs
 while True:
+    shop = f'''
+Hello there! Welcome to the shop. In here you can spend points to get upgrades.
+Type exit to exit the shop. Here is the list of items that you can buy. 
+Type the corresponding number to buy the item!
+1. Multiply all point gains by x2 (Cost: {multiplier * 15 + multiplier * 3})
+'''
     userinput = str(input(">>> "))
     formatteduserinput = userinput.replace(" ", "").lower()
     ctime = datetime.now()
@@ -87,9 +96,9 @@ while True:
         case "?updatelog":
             functions.printAnimation(updatelog)
         case ("?rps" | "?rockpaperscissors"):
-            points = functions.rps(points)
+            points = functions.rps(points, multiplier)
         case ("?golt" | "?greaterorlowerthan"):
-            points = functions.golt(points)
+            points = functions.golt(points, multiplier)
         case "?date":
             functions.printAnimation(f"Your current date is {formatteddate}!\nIsLeapYear: {functions.isLeapYear()}\nYour local timezone: {datetime.now().astimezone().strftime("%Z")}")
         case "?time":
@@ -119,6 +128,27 @@ while True:
             functions.printAnimation(f"I flipped a coin... it landed on {random.choice(["Heads", "Tails"])}!")
         case "?points":
             functions.printAnimation("It seems like you don't have any points. Play a game to get points!" if points == 0 else f"You currently have {points} points!")
+        case "?multiplier":
+            if multiplier == 1:
+                print("Your multiplier count is 1 (default). Play some games to get points, and buy the multiplier upgrade at the shop!")
+            else:
+                print(f"All point gains are currently multiplied by {multiplier}.")
+        case "?shop":
+            print(shop)
+            while True:
+                shopInput = input("Enter an item value or exit!\n  >>> ")
+                if shopInput == "exit": break
+                try:
+                    shopInput = int(shopInput)
+                except:
+                    print("That is not a valid input. Try again!\n  >>> ")
+                    continue
+                if shopInput == 1 and points >= multiplier * 15 + multiplier * 3:
+                    print("You bought the first upgrade! Now, all of your point gains are multiplied by x2.")
+                    points -= multiplier * 15 + multiplier * 3
+                    multiplier *= 2
+                elif shopInput == 1 and points < multiplier * 15 + multiplier * 3:
+                    print("You can't afford this item.")
         case (""):
             pass
         case _:
