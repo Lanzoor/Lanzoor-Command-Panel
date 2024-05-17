@@ -3,7 +3,7 @@ from datetime import datetime
 
 points = 0
 multiplier = 1
-currentver = "Beta 1.9"
+currentver = "1.0.0"
 
 starthelp = f'''
 Hello User! Welcome to the Lanzoor Command Panel (Version: {currentver})! 
@@ -43,13 +43,13 @@ functions.printAnimation("Executing LCP...")
 time.sleep(0.5)
 functions.printAnimation(starthelp)
 
-# Command Inputs
 while True:
+    cost = multiplier * 20 + multiplier * 5 if multiplier < 4 else multiplier * 25 + multiplier * 7
     shop = f'''
 Hello there! Welcome to the shop. In here you can spend points to get upgrades.
 Type exit to exit the shop. Here is the list of items that you can buy. 
 Type the corresponding number to buy the item!
-1. Multiply all point gains by x2 (Cost: {multiplier * 15 + multiplier * 3})
+1. Multiply all point gains by x2 (Cost: {cost})
 '''
     userinput = str(input(">>> "))
     formatteduserinput = userinput.replace(" ", "").lower()
@@ -117,17 +117,14 @@ Type the corresponding number to buy the item!
                 except:
                     print("That is not a valid input. Try again!\n  >>> ")
                     continue
-                if shopInput == 1 and points >= multiplier * 15 + multiplier * 3:
+                if shopInput == 1 and points >= cost:
                     print("You bought the first upgrade! Now, all of your point gains are multiplied by x2.")
-                    points -= multiplier * 15 + multiplier * 3
+                    points -= cost
                     multiplier *= 2
-                elif shopInput == 1 and points < multiplier * 15 + multiplier * 3:
+                elif shopInput == 1 and points < cost:
                     print("You can't afford this item.")
         case (""):
             pass
         case _:
             if "?" in formatteduserinput: 
                 functions.printAnimation(f"\"{userinput}\" is not a valid command, try again!")
-
-# TODO: Try to implement the point saving system but idk how lmao
-# TODO: add some easter eggs for dataminers LOL
