@@ -25,21 +25,3 @@ If you are done installing those files or the ZIP file, double click on the **ma
 > NOTE: If you are on MacOS, because an outdated version of Python Interpreter is installed by default, make sure to select the new one. You can check those by looking their names carefully.
 
 It will now open up the terminal, which is the Lanzoor Command Panel itself.
-
-Also if you want to run it inside your powershell / bash shell, move the zip file inside the C disk and run this command in Windows:
-
-```ps
-cd "C:/LCP Project/"
-python -o "main.py"
-```
-
-(If `python` does not work, then you can try `py`)
-
-And run this in MacOS:
-
-```bash
-cd "C:/LCP Project/"
-python3 -o main.py
-```
-
-Extra information can be found when you input `?help` in the Lanzoor Command Panel Program.
