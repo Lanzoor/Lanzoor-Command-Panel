@@ -9,7 +9,7 @@ def tryIntInput(prompt: str) -> int:
         except:
             printAnimation("You dumdum, that is not an integer!")
 def golt(points: int, multi: int):
-    number = random.randint(0, 100)
+    number = random.randint(1, 100)
     attempts = 0
     printAnimation(
         '''
