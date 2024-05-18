@@ -1,19 +1,12 @@
-import random, time, timeit, functions
+import random, time, timeit, functions, base64, re
 from datetime import datetime
 
 points = 0
 multiplier = 1
-currentver = "1.0.0"
-
-starthelp = f'''
-Hello User! Welcome to the Lanzoor Command Panel (Version: {currentver})! 
-Type ?help to get help about the commands that you can use, or type ?exit to exit LCP.
-'''
-
+currentver = "1.0.5"
 help = '''
 Welcome to LCP command help! Here are the list of all commands that you can use.
 ?help: Open this help message.
-?starthelp: Open the start help message again.
 ?exit: Exit LCP.
 ?info: Open the information of LCP.
 ?rps or ?rockpaperscissors: Play the Rock Paper Scissors game.
@@ -27,12 +20,14 @@ Welcome to LCP command help! Here are the list of all commands that you can use.
 ?flipacoin: Flip a coin.
 ?points: Check how many points you currently have.
 ?shop: Open the shop.
+?import: Import a save file.
+?export: Export a save file.
 '''
 
 info = f'''
 Welcome to LCP information page! Here are some informations about LCP.
 Author: Lanzoor
-Programming language: Python (3.11~)
+Programming language: Python (3.12~)
 Version (Current version): {currentver}
 First version: Alpha v1.0 in GMT+9 2024-04-06 3PM
 '''
@@ -41,10 +36,11 @@ functions.printAnimation("Initializing Program...\n")
 time.sleep(0.5)
 functions.printAnimation("Executing LCP...")
 time.sleep(0.5)
-functions.printAnimation(starthelp)
+functions.printAnimation(f'''Hello User! Welcome to the Lanzoor Command Panel (Version: {currentver})! 
+Type ?help to get help about the commands that you can use, or type ?exit to exit LCP.''')
 
 while True:
-    cost = multiplier * 20 + multiplier * 5 if multiplier < 4 else multiplier * 25 + multiplier * 7
+    cost = multiplier * (multiplier + 90) + multiplier * (multiplier + 3)
     shop = f'''
 Hello there! Welcome to the shop. In here you can spend points to get upgrades.
 Type exit to exit the shop. Here is the list of items that you can buy. 
@@ -58,14 +54,13 @@ Type the corresponding number to buy the item!
     formattedtime = ctime.strftime("%I:%M:%S %p")
     match formatteduserinput:
         case "?exit":
-            functions.printAnimation("Exiting LCP...")
-            time.sleep(0.5)
-            functions.printAnimation("You exited the LCP!")
-            break
+            yesorno = functions.inputAnimation("Are you sure you want to leave LCP?\nAll of your data will be lost. However, your save data can be imported and exported using the import and the export commands. (Input Y to leave.)\n  >>> ").lower()
+            if yesorno == "y":
+                functions.printAnimation("Alright. See you next time!")
+                time.sleep(1)
+                break
         case "?help":
             functions.printAnimation(help)
-        case "?starthelp":
-            functions.printAnimation(starthelp)
         case "?info":
             functions.printAnimation(info)
         case ("?rps" | "?rockpaperscissors"):
@@ -103,26 +98,50 @@ Type the corresponding number to buy the item!
             functions.printAnimation("It seems like you don't have any points. Play a game to get points!" if points == 0 else f"You currently have {points} points!")
         case "?multiplier":
             if multiplier == 1:
-                print("Your multiplier count is 1 (default). Play some games to get points, and buy the multiplier upgrade at the shop!")
+                functions.printAnimation("Your multiplier count is 1 (default). Play some games to get points, and buy the multiplier upgrade at the shop!")
             else:
-                print(f"All point gains are currently multiplied by {multiplier}.")
+                functions.printAnimation(f"All point gains are currently multiplied by x{multiplier}.")
         case "?shop":
-            print(shop)
+            functions.printAnimation(shop)
             while True:
-                shopInput = input("Enter an item value or exit!\n  >>> ")
+                shopInput = functions.inputAnimation("Enter an item value or exit!\n  >>> ")
                 if shopInput == "exit": 
                     break
                 try:
                     shopInput = int(shopInput)
                 except:
-                    print("That is not a valid input. Try again!\n  >>> ")
+                    functions.printAnimation("That is not a valid input. Try again!\n  >>> ")
                     continue
                 if shopInput == 1 and points >= cost:
-                    print("You bought the first upgrade! Now, all of your point gains are multiplied by x2.")
+                    functions.printAnimation("You bought the first upgrade! Now, all of your point gains are multiplied by x2.")
                     points -= cost
                     multiplier *= 2
                 elif shopInput == 1 and points < cost:
-                    print("You can't afford this item.")
+                    functions.printAnimation("You can't afford this item.")
+        case "?export":
+            beforeencoding = f"mul:{multiplier},po:{points}"
+            afterencoding = base64.b16encode(beforeencoding.encode()).decode()
+            functions.printAnimation(f"Your current save is {afterencoding}\nyou can import your current data by using the ?import command!\nMAKE SURE TO INPUT THE EXACT SAVE FORMAT.")
+        case "?import":
+            while True:
+                beforedecoding = functions.inputAnimation("Enter a valid save format!\n  >>> ")
+                try:
+                    afterdecoding = base64.b16decode(beforedecoding.encode()).decode()
+                except:
+                    functions.printAnimation("That is not a valid save format. Enter a valid save format using the ?export command.")
+                    continue
+                
+                pattern = re.compile(r"^mul:(\d+),po:(\d+)$")
+                isMatched = pattern.match(afterdecoding)
+                if isMatched:
+                    break
+                else:
+                    functions.printAnimation("Not a valid format! Try again.")
+                    continue
+            functions.printAnimation("LOADING SAVED DATA...")
+            afterdecoding = afterdecoding.replace("mul:", "").replace(",po:", " ").split(" ")
+            multiplier, points = int(afterdecoding[0]), int(afterdecoding[1])
+            functions.printAnimation("SAVE DATA SUCCESFULLY LOADED.")
         case (""):
             pass
         case _:
