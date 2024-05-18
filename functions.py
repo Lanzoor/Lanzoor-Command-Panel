@@ -13,12 +13,11 @@ def golt(points: int, multi: int):
     attempts = 0
     printAnimation(
         '''
-Let's play the \"Greater or lower than\" game!
+        Let's play the \"Greater or lower than\" game!
 The rules are simple, I pick a random number between 1 and 100.
 If you make a guess, I'll tell you whenever your guess is greater than my guess, 
 or your guess is lower than my guess until you guess the value! Also type exit to just... exit the game.
-''',
-    )
+''')
 
     while True:
         inputValue = inputAnimation("Enter your guess!\n  >>> ")
@@ -38,7 +37,7 @@ or your guess is lower than my guess until you guess the value! Also type exit t
         elif inputValue < number and not (inputValue < 1):
             printAnimation(f"The number is greater than {inputValue}, try again!")
         elif inputValue == number:
-            printAnimation(f"You've guessed it right! The answer was {number}, and you used {attempts} attempts in this game. You gained {7 * multi} points!")
+            printAnimation(f"You've guessed it right! The answer was {number}, and you used {attempts} attempts in this game. You gained {20 * multi} points!")
             points += 20 * multi
             return points
     
