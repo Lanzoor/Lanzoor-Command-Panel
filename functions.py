@@ -39,7 +39,7 @@ or your guess is lower than my guess until you guess the value! Also type exit t
             printAnimation(f"The number is greater than {inputValue}, try again!")
         elif inputValue == number:
             printAnimation(f"You've guessed it right! The answer was {number}, and you used {attempts} attempts in this game. You gained {7 * multi} points!")
-            points += 7 * multi
+            points += 20 * multi
             return points
     
 def rps(points: int, multi: int):
@@ -52,7 +52,7 @@ def rps(points: int, multi: int):
     
     if CPUChoice == UserChoice:
         WinOrLose = "It's a draw!"
-        addingPoints = 2 * multi
+        addingPoints = 4 * multi
     else:
         WinningConditions = [
             ("Rock", "Scissors"),
@@ -61,10 +61,10 @@ def rps(points: int, multi: int):
         ]
         if (UserChoice, CPUChoice) in WinningConditions:
             WinOrLose = "You won!"
-            addingPoints = 3 * multi
+            addingPoints = 6 * multi
         else:
             WinOrLose = "I won!"
-            addingPoints = 1 * multi
+            addingPoints = 2 * multi
     points += addingPoints
     printAnimation(f"You picked {UserChoice}, I pick {CPUChoice}! {WinOrLose} You gained {addingPoints} points in this game.")
     return points
@@ -89,3 +89,5 @@ def inputAnimation(message: str, delay: float | int = 0.001) -> str:
         sys.stdout.flush()
         sleep(delay)
     return input("")
+
+
