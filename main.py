@@ -3,7 +3,7 @@ from datetime import datetime
 
 points = 0
 multiplier = 1
-currentver = "1.0.5"
+currentver = "1.0.7"
 help = '''
 Welcome to LCP command help! Here are the list of all commands that you can use.
 ?help: Open this help message.
@@ -40,12 +40,15 @@ functions.printAnimation(f'''Hello User! Welcome to the Lanzoor Command Panel (V
 Type ?help to get help about the commands that you can use, or type ?exit to exit LCP.''')
 
 while True:
-    cost = multiplier * (multiplier + 90) + multiplier * (multiplier + 3)
-    shop = f'''
+    multipliercost = multiplier * (multiplier + 90) + multiplier * (multiplier + 3)
+    shopopen = f'''
 Hello there! Welcome to the shop. In here you can spend points to get upgrades.
 Type exit to exit the shop. Here is the list of items that you can buy. 
 Type the corresponding number to buy the item!
-1. Multiply all point gains by x2 (Cost: {cost})
+'''
+    shopafter = f'''
+1. Multiply all point gains by x2 (Cost: {multipliercost})
+You currently have {points} points.
 '''
     userinput = str(input(">>> "))
     formatteduserinput = userinput.replace(" ", "").lower()
@@ -102,8 +105,9 @@ Type the corresponding number to buy the item!
             else:
                 functions.printAnimation(f"All point gains are currently multiplied by x{multiplier}.")
         case "?shop":
-            functions.printAnimation(shop)
+            functions.printAnimation(shopopen)
             while True:
+                functions.printAnimation(shopafter)
                 shopInput = functions.inputAnimation("Enter an item value or exit!\n  >>> ")
                 if shopInput == "exit": 
                     break
@@ -112,25 +116,25 @@ Type the corresponding number to buy the item!
                 except:
                     functions.printAnimation("That is not a valid input. Try again!\n  >>> ")
                     continue
-                if shopInput == 1 and points >= cost:
+                if shopInput == 1 and points >= multipliercost:
                     functions.printAnimation("You bought the first upgrade! Now, all of your point gains are multiplied by x2.")
-                    points -= cost
+                    points -= multipliercost
                     multiplier *= 2
-                elif shopInput == 1 and points < cost:
+                elif shopInput == 1 and points < multipliercost:
                     functions.printAnimation("You can't afford this item.")
         case "?export":
             beforeencoding = f"mul:{multiplier},po:{points}"
-            afterencoding = base64.b16encode(beforeencoding.encode()).decode()
+            afterencoding = base64.b64encode(beforeencoding.encode()).decode()
             functions.printAnimation(f"Your current save is {afterencoding}\nyou can import your current data by using the ?import command!\nMAKE SURE TO INPUT THE EXACT SAVE FORMAT.")
         case "?import":
             while True:
                 beforedecoding = functions.inputAnimation("Enter a valid save format!\n  >>> ")
+                if beforedecoding == "exit": break
                 try:
-                    afterdecoding = base64.b16decode(beforedecoding.encode()).decode()
+                    afterdecoding = base64.b64decode(beforedecoding.encode()).decode()
                 except:
                     functions.printAnimation("That is not a valid save format. Enter a valid save format using the ?export command.")
                     continue
-                
                 pattern = re.compile(r"^mul:(\d+),po:(\d+)$")
                 isMatched = pattern.match(afterdecoding)
                 if isMatched:
@@ -138,12 +142,15 @@ Type the corresponding number to buy the item!
                 else:
                     functions.printAnimation("Not a valid format! Try again.")
                     continue
-            functions.printAnimation("LOADING SAVED DATA...")
-            afterdecoding = afterdecoding.replace("mul:", "").replace(",po:", " ").split(" ")
-            multiplier, points = int(afterdecoding[0]), int(afterdecoding[1])
-            functions.printAnimation("SAVE DATA SUCCESFULLY LOADED.")
+            if beforedecoding != "exit":
+                functions.printAnimation("LOADING SAVE DATA...")
+                time.sleep(1) # To make it look like it is actually going through millions of iterations
+                afterdecoding = afterdecoding.replace("mul:", "").replace(",po:", " ").split(" ")
+                multiplier, points = int(afterdecoding[0]), int(afterdecoding[1])
+                functions.printAnimation(f"Save data succesfully loaded with {points} points and {multiplier} multiplier count.")
         case (""):
             pass
         case _:
             if "?" in formatteduserinput: 
                 functions.printAnimation(f"\"{userinput}\" is not a valid command, try again!")
+# NOTE: The save system is still in beta. Unexpected errors might occur.
