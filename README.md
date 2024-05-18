@@ -20,8 +20,11 @@ Download the latest version of Lanzoor Command Panel by clicking [here](https://
 
 > NOTE: If you are going to download individual files, make sure to download both **functions.py** file and the **main.py** file. Otherwise the code just will not work.
 
+## Running Lanzoor Command Panel
+
 If you are done installing those files or the ZIP file, double click on the **main.py** file. It will show you a pop up, saying to choose which app/program to open this file with; click the option **Python**.
 
 > NOTE: If you are on MacOS, because an outdated version of Python Interpreter is installed by default, make sure to select the new one. You can check those by looking their names carefully.
 
 It will now open up the terminal, which is the Lanzoor Command Panel itself.
+Now have fun!
