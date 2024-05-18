@@ -124,14 +124,14 @@ You currently have {points} points.
                     functions.printAnimation("You can't afford this item.")
         case "?export":
             beforeencoding = f"mul:{multiplier},po:{points}"
-            afterencoding = base64.b64encode(beforeencoding.encode()).decode()
+            afterencoding = base64.b85encode(beforeencoding.encode()).decode()
             functions.printAnimation(f"Your current save is {afterencoding}\nyou can import your current data by using the ?import command!\nMAKE SURE TO INPUT THE EXACT SAVE FORMAT.")
         case "?import":
             while True:
                 beforedecoding = functions.inputAnimation("Enter a valid save format!\n  >>> ")
                 if beforedecoding == "exit": break
                 try:
-                    afterdecoding = base64.b64decode(beforedecoding.encode()).decode()
+                    afterdecoding = base64.b85decode(beforedecoding.encode()).decode()
                 except:
                     functions.printAnimation("That is not a valid save format. Enter a valid save format using the ?export command.")
                     continue
