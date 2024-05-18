@@ -8,21 +8,26 @@ def tryIntInput(prompt: str) -> int:
             return int(inputAnimation(prompt))
         except:
             printAnimation("You dumdum, that is not an integer!")
-def golt(points: int, multi: int):
+def golt(points: int, multi: int, mulmul: int):
     number = random.randint(1, 100)
     attempts = 0
     printAnimation(
         '''
-        Let's play the \"Greater or lower than\" game!
-The rules are simple, I pick a random number between 1 and 100.
-If you make a guess, I'll tell you whenever your guess is greater than my guess, 
-or your guess is lower than my guess until you guess the value! Also type exit to just... exit the game.
+Let's play the \"Greater or lower than\" game!
+Type 'help' to know how to play!
 ''')
 
     while True:
         inputValue = inputAnimation("Enter your guess!\n  >>> ")
         if inputValue == "exit": 
             return points
+        elif inputValue == "help":
+            print('''
+The rules are simple, I pick a random number between 1 and 100.
+If you make a guess, I'll tell you whenever your guess is greater than my guess, 
+or your guess is lower than my guess until you guess the value!
+''')
+            continue
         try: 
             inputValue = int(inputValue)
         except:
@@ -37,11 +42,11 @@ or your guess is lower than my guess until you guess the value! Also type exit t
         elif inputValue < number and not (inputValue < 1):
             printAnimation(f"The number is greater than {inputValue}, try again!")
         elif inputValue == number:
-            printAnimation(f"You've guessed it right! The answer was {number}, and you used {attempts} attempts in this game. You gained {20 * multi} points!")
-            points += 20 * multi
+            printAnimation(f"You've guessed it right! The answer was {number}, and you used {attempts} attempts in this game. You gained {30 * multi * mulmul} points!")
+            points += 45 * multi * mulmul
             return points
     
-def rps(points: int, multi: int):
+def rps(points: int, multi: int, mulmul: int):
     UserChoice = inputAnimation("Choose one! Rock, Paper, or Scissors!\n  >>> ").capitalize().replace(" ","")
     RpsChoice = ["Rock", "Paper", "Scissors"]
     CPUChoice = random.choice(RpsChoice)
@@ -51,7 +56,7 @@ def rps(points: int, multi: int):
     
     if CPUChoice == UserChoice:
         WinOrLose = "It's a draw!"
-        addingPoints = 4 * multi
+        addingPoints = 6 * multi * mulmul
     else:
         WinningConditions = [
             ("Rock", "Scissors"),
@@ -60,10 +65,10 @@ def rps(points: int, multi: int):
         ]
         if (UserChoice, CPUChoice) in WinningConditions:
             WinOrLose = "You won!"
-            addingPoints = 6 * multi
+            addingPoints = 12 * multi * mulmul
         else:
             WinOrLose = "I won!"
-            addingPoints = 2 * multi
+            addingPoints = 4 * multi * mulmul
     points += addingPoints
     printAnimation(f"You picked {UserChoice}, I pick {CPUChoice}! {WinOrLose} You gained {addingPoints} points in this game.")
     return points
@@ -88,5 +93,3 @@ def inputAnimation(message: str, delay: float | int = 0.001) -> str:
         sys.stdout.flush()
         sleep(delay)
     return input("")
-
-
