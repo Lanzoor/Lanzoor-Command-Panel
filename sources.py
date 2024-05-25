@@ -1,100 +1,101 @@
-import random, sys
-from datetime import datetime
-from time import sleep
+try:
+    import random, sys
+    from datetime import datetime
+    from time import sleep
 
-def try_integer_input(prompt: str) -> int:
-    while True:
-        try:
-            return int(input_with_animation(prompt))
-        except:
-            print_with_animation("You dumdum, that is not an integer!")
-def golt(points: int, multi: int, mulmul: int):
-    number = random.randint(1, 100)
-    attempts = 0
-    print_with_animation(
-        '''
+    def try_integer_input(prompt: str) -> int:
+        while True:
+            try:
+                return int(input_with_animation(prompt))
+            except:
+                print_with_animation("You dumdum, that is not an integer!")
+    def golt(points: int, multi: int, mulmul: int):
+        number = random.randint(1, 100)
+        attempts = 0
+        print_with_animation('''
 Let's play the \"Greater or lower than\" game!
 Type 'help' to know how to play!
 ''')
-
-    while True:
-        user_guess = input_with_animation("Enter your guess!\n  >>> ")
-        if user_guess == "exit": 
-            return points
-        elif user_guess == "help":
-            print('''
+        while True:
+            user_guess = input_with_animation("Enter your guess!\n  >>> ")
+            if user_guess == "exit": 
+                return points
+            elif user_guess == "help":
+                print('''
 The rules are simple, I pick a random number between 1 and 100.
 If you make a guess, I'll tell you whenever your guess is greater than my guess, 
 or your guess is lower than my guess until you guess the value!
 ''')
-            continue
-        try: 
-            user_guess = int(user_guess)
-        except:
-            print_with_animation("You dumdum, that is not an integer!")
-            continue
-        attempts += 1
+                continue
+            try: 
+                user_guess = int(user_guess)
+            except:
+                print_with_animation("You dumdum, that is not an integer!")
+                continue
+            attempts += 1
         
-        if not (1 <= number <= 100):
-            print_with_animation("You dumdum, that value is out of the range! Try a value that is in the range 1 ~ 100.")
-        elif user_guess > number and not (user_guess > 100):
-            print_with_animation(f"The number is lower than {user_guess}, try again!")
-        elif user_guess < number and not (user_guess < 1):
-            print_with_animation(f"The number is greater than {user_guess}, try again!")
-        elif user_guess == number:
-            print_with_animation(f"You've guessed it right! The answer was {number}, and you used {attempts} attempts in this game. You gained {30 * multi * mulmul} points!")
-            points += 45 * multi * mulmul
-            return points
+            if not (1 <= number <= 100):
+                print_with_animation("You dumdum, that value is out of the range! Try a value that is in the range 1 ~ 100.")
+            elif user_guess > number and not (user_guess > 100):
+                print_with_animation(f"The number is lower than {user_guess}, try again!")
+            elif user_guess < number and not (user_guess < 1):
+                print_with_animation(f"The number is greater than {user_guess}, try again!")
+            elif user_guess == number:
+                print_with_animation(f"You've guessed it right! The answer was {number}, and you used {attempts} attempts in this game. You gained {30 * multi * mulmul} points!")
+                points += 45 * multi * mulmul
+                return points
     
-def rps(points: int, multi: int, mulmul: int):
-    user_choice = input_with_animation("Choose one! Rock, Paper, or Scissors!\n  >>> ").capitalize().replace(" ","")
-    valid_rps_choice = ["Rock", "Paper", "Scissors"]
-    computer_choice = random.choice(valid_rps_choice)
-    
-    while user_choice not in valid_rps_choice:
-        user_choice = input_with_animation("You dumdum, that is not a valid choice! Try again.\n  >>> ").capitalize().replace(" ","")
-    
-    if computer_choice == user_choice:
-        did_i_win_or_lose = "It's a draw!"
-        adding_points = 6 * multi * mulmul
-    else:
-        conditions_of_winning = [
-            ("Rock", "Scissors"),
-            ("Scissors", "Paper"),
-            ("Paper", "Rock"),
-        ]
-        if (user_choice, computer_choice) in conditions_of_winning:
-            did_i_win_or_lose = "You won!"
-            adding_points = 12 * multi * mulmul
+    def rps(points: int, multi: int, mulmul: int):
+        user_choice = input_with_animation("Choose one! Rock, Paper, or Scissors!\n  >>> ").capitalize().replace(" ","")
+        valid_rps_choice = ["Rock", "Paper", "Scissors"]
+        computer_choice = random.choice(valid_rps_choice)
+
+        while user_choice not in valid_rps_choice:
+            user_choice = input_with_animation("You dumdum, that is not a valid choice! Try again.\n  >>> ").capitalize().replace(" ","")
+
+        if computer_choice == user_choice:
+            did_i_win_or_lose = "It's a draw!"
+            adding_points = 6 * multi * mulmul
         else:
-            did_i_win_or_lose = "I won!"
-            adding_points = 4 * multi * mulmul
-    points += adding_points
-    print_with_animation(f"You picked {user_choice}, I pick {computer_choice}! {did_i_win_or_lose} You gained {adding_points} points in this game.")
-    return points
+            conditions_of_winning = [
+                ("Rock", "Scissors"),
+                ("Scissors", "Paper"),
+                ("Paper", "Rock"),
+            ]
+            if (user_choice, computer_choice) in conditions_of_winning:
+                did_i_win_or_lose = "You won!"
+                adding_points = 12 * multi * mulmul
+            else:
+                did_i_win_or_lose = "I won!"
+                adding_points = 4 * multi * mulmul
+        points += adding_points
+        print_with_animation(f"You picked {user_choice}, I pick {computer_choice}! {did_i_win_or_lose} You gained {adding_points} points in this game.")
+        return points
 
-def ordinal(n: int) -> str:
-    if 11 <= n % 100 <= 13: 
-        return str(n) + "th"
-    return str(n) + {1: "st", 2: "nd", 3: "rd"}.get(n % 10, "th")
+    def ordinal(n: int) -> str:
+        if 11 <= n % 100 <= 13: 
+            return str(n) + "th"
+        return str(n) + {1: "st", 2: "nd", 3: "rd"}.get(n % 10, "th")
 
-def is_leap_year(year: int = int(datetime.now().strftime("%Y"))) -> bool:
-    return year % 4 == 0 and year % 100 != 0 or year % 400 == 0
+    def is_leap_year(year: int = int(datetime.now().strftime("%Y"))) -> bool:
+        return year % 4 == 0 and year % 100 != 0 or year % 400 == 0
 
-def print_with_animation(message: str, delay: float | int = 0.001, end_with_newline = True) -> None:
-    for char in message:
-        sys.stdout.write(char)
-        sys.stdout.flush()
-        sleep(delay)
-    if end_with_newline:
-        print()
+    def print_with_animation(message: str, delay: float | int = 0.001, end_with_newline = True) -> None:
+        for char in message:
+            sys.stdout.write(char)
+            sys.stdout.flush()
+            sleep(delay)
+        if end_with_newline:
+            print()
     
-def input_with_animation(message: str, delay: float | int = 0.001) -> str:
-    for char in message:
-        sys.stdout.write(char)
-        sys.stdout.flush()
-        sleep(delay)
-    return input("")
+    def input_with_animation(message: str, delay: float | int = 0.001) -> str:
+        for char in message:
+            sys.stdout.write(char)
+            sys.stdout.flush()
+            sleep(delay)
+        return input("")
+except:
+    print("Uh oh, something went wrong. It is one of those cases;\n1: You downloaded an outdated version of Python.\n2: Unknown issue appeared. If you belive this is the case, please contact the author Lanzoor.\n3: You did not download both sources.py file and main.py file.\n4: Something is wrong with your Python installation.\n5: Something is wrong with your OS.\nI am so sorry for the inconvenience.")
 
 currentver = "1.1.6"
 
