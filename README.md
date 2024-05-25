@@ -4,7 +4,7 @@
 
 ## Installing the Python Interpreter
 
-Sorry for the inconvenience, but for now, Lanzoor Command Panel needs a **Python interpreter** to run successfully. If you already installed the Python interpreter, you can skip this step.
+Sorry for the inconvenience, but for now, Lanzoor Command Panel needs a **Python interpreter** to run. If you already installed the Python interpreter, you can skip this step.
 
 1. Start by installing the **Python interpreter** by clicking [here](https://python.org/downloads).
 2. Click the **[Download Python]** button. It will install an executable file for you.
@@ -16,9 +16,9 @@ If you are done downloading the Python interpreter. You can proceed downloading 
 
 ## Installing Lanzoor Command Panel
 
-Download the latest version of Lanzoor Command Panel by clicking [here](https://github.com/Lanzoor/Lanzoor-Command-Panel/releases/latest). Make sure to download the ZIP file. Now, unzip the ZIP file that you downloaded. It will contain those files: **README.md** which is the current file that you are viewing, **functions.py** python file which is a file that contains functions for the actual program itself which is the **main.py**.
+Download the latest version of Lanzoor Command Panel by clicking [here](https://github.com/Lanzoor/Lanzoor-Command-Panel/releases/latest). Make sure to download the ZIP file. Now, unzip the ZIP file that you downloaded. It will contain those files: **README.md** which is the current file that you are viewing, **sources.py** python file which is a file that contains functions for the actual program itself which is the **main.py**.
 
-> NOTE: If you are going to download individual files, make sure to download both **functions.py** file and the **main.py** file. Otherwise the code just will not work.
+> NOTE: If you are going to download individual files, make sure to download both **sources.py** file and the **main.py** file. Otherwise the code just will not work.
 
 ## Running Lanzoor Command Panel
 
@@ -28,3 +28,5 @@ If you are done installing those files or the ZIP file, double click on the **ma
 
 It will now open up the terminal, which is the Lanzoor Command Panel itself.
 Now have fun!
+
+> NOTE: Also, if you want to enjoy the true game, I definitely recommend playing the game without taking a peek at the game files.
